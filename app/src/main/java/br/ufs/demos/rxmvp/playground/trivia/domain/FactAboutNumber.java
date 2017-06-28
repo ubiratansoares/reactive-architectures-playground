@@ -1,4 +1,4 @@
-package br.ufs.demos.rxmvp.playground.triva.domain;
+package br.ufs.demos.rxmvp.playground.trivia.domain;
 
 import org.immutables.value.Value;
 

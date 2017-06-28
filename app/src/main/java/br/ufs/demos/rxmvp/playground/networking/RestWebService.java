@@ -1,6 +1,6 @@
 package br.ufs.demos.rxmvp.playground.networking;
 
-import br.ufs.demos.rxmvp.playground.triva.infrastructure.NumbersTriviaPayload;
+import br.ufs.demos.rxmvp.playground.trivia.infrastructure.NumbersTriviaPayload;
 import io.reactivex.Flowable;
 import retrofit2.http.GET;
 import retrofit2.http.Path;

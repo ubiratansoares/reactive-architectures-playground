@@ -1,4 +1,4 @@
-package br.ufs.demos.rxmvp.playground.triva.infrastructure;
+package br.ufs.demos.rxmvp.playground.trivia.infrastructure;
 
 import static br.ufs.demos.rxmvp.playground.util.Checks.notNullNotEmpty;
 

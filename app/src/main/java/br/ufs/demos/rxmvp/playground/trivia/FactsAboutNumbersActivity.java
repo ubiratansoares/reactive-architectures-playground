@@ -1,4 +1,4 @@
-package br.ufs.demos.rxmvp.playground.triva;
+package br.ufs.demos.rxmvp.playground.trivia;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

@@ -1,6 +1,6 @@
-package br.ufs.demos.rxmvp.playground.triva.di;
+package br.ufs.demos.rxmvp.playground.trivia.di;
 
-import br.ufs.demos.rxmvp.playground.triva.FactsAboutNumbersActivity;
+import br.ufs.demos.rxmvp.playground.trivia.FactsAboutNumbersActivity;
 import dagger.Subcomponent;
 import dagger.android.AndroidInjector;
 

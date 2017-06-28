@@ -3,8 +3,8 @@ package br.ufs.demos.rxmvp.playground;
 import org.junit.Before;
 import org.junit.Test;
 
-import br.ufs.demos.rxmvp.playground.triva.infrastructure.TriviaInfrastructure;
-import br.ufs.demos.rxmvp.playground.triva.infrastructure.PayloadMapper;
+import br.ufs.demos.rxmvp.playground.trivia.infrastructure.TriviaInfrastructure;
+import br.ufs.demos.rxmvp.playground.trivia.infrastructure.PayloadMapper;
 
 
 /**

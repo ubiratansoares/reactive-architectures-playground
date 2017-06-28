@@ -1,10 +1,10 @@
-package br.ufs.demos.rxmvp.playground.triva.infrastructure;
+package br.ufs.demos.rxmvp.playground.trivia.infrastructure;
 
 import java.util.List;
 
-import br.ufs.demos.rxmvp.playground.triva.domain.FactAboutNumber;
-import br.ufs.demos.rxmvp.playground.triva.domain.TriviaForNumbersSource;
-import br.ufs.demos.rxmvp.playground.triva.domain.TriviaGenerator;
+import br.ufs.demos.rxmvp.playground.trivia.domain.FactAboutNumber;
+import br.ufs.demos.rxmvp.playground.trivia.domain.TriviaForNumbersSource;
+import br.ufs.demos.rxmvp.playground.trivia.domain.TriviaGenerator;
 import br.ufs.demos.rxmvp.playground.networking.RestWebService;
 import io.reactivex.Flowable;
 import io.reactivex.schedulers.Schedulers;

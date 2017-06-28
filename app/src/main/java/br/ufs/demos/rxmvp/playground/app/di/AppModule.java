@@ -5,7 +5,7 @@ import android.content.Context;
 
 import javax.inject.Singleton;
 
-import br.ufs.demos.rxmvp.playground.triva.di.TriviaComponent;
+import br.ufs.demos.rxmvp.playground.trivia.di.TriviaComponent;
 import dagger.Module;
 import dagger.Provides;
 
