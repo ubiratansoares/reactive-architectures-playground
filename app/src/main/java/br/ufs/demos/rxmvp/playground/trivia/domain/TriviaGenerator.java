@@ -10,7 +10,7 @@ import java.util.Random;
 
 public class TriviaGenerator {
 
-    private static final int LARGER_NUMBER_TO_LEARN_FACT = 200;
+    private static final int LARGER_NUMBER_TO_LEARN_ABOUT = 200;
     private static final int TRIVIA_COUNT = 10;
     private static final Random RANDOMZIDER = new Random();
 
@@ -20,7 +20,7 @@ public class TriviaGenerator {
 
         while (numbers.size() < TRIVIA_COUNT) {
 
-            int candidate = RANDOMZIDER.nextInt(LARGER_NUMBER_TO_LEARN_FACT);
+            int candidate = RANDOMZIDER.nextInt(LARGER_NUMBER_TO_LEARN_ABOUT);
 
             if (!numbers.contains(candidate)) {
                 numbers.add(candidate);
