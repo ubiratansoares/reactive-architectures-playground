@@ -1,0 +1,20 @@
+package br.ufs.demos.rxmvp.playground.networking;
+
+import br.ufs.demos.rxmvp.playground.triva.infrastructure.NumbersTriviaPayload;
+import io.reactivex.Flowable;
+import retrofit2.http.GET;
+import retrofit2.http.Path;
+
+/**
+ * Created by bira on 6/26/17.
+ */
+
+public interface RestWebService {
+
+    String BASE_URL = "http://numbersapi.com";
+
+    @GET("/{numbers}/trivia") Flowable<NumbersTriviaPayload> getTrivia(
+            @Path("numbers") String commaSeparatedNumbers
+    );
+
+}
