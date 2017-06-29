@@ -2,7 +2,7 @@ package br.ufs.demos.rxmvp.playground.networking.di;
 
 import javax.inject.Singleton;
 
-import br.ufs.demos.rxmvp.playground.networking.RestWebService;
+import br.ufs.demos.rxmvp.playground.networking.NumbersWebService;
 import dagger.Module;
 import dagger.Provides;
 import okhttp3.Interceptor;
@@ -19,16 +19,16 @@ import retrofit2.converter.gson.GsonConverterFactory;
 @Module
 public class RestWebServiceModule {
 
-    @Provides @Singleton static RestWebService webService(OkHttpClient customHttpClient) {
+    @Provides @Singleton static NumbersWebService webService(OkHttpClient customHttpClient) {
 
         Retrofit adapter = new Retrofit.Builder()
-                .baseUrl(RestWebService.BASE_URL)
+                .baseUrl(NumbersWebService.BASE_URL)
                 .client(customHttpClient)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        return adapter.create(RestWebService.class);
+        return adapter.create(NumbersWebService.class);
     }
 
     @Provides @Singleton static OkHttpClient httpClient(Interceptor logger) {

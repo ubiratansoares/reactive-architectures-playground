@@ -6,12 +6,12 @@ import android.support.v7.app.AppCompatActivity;
 import javax.inject.Inject;
 
 import br.ufs.demos.rxmvp.playground.R;
-import br.ufs.demos.rxmvp.playground.networking.RestWebService;
+import br.ufs.demos.rxmvp.playground.networking.NumbersWebService;
 import dagger.android.AndroidInjection;
 
 public class FactsAboutNumbersActivity extends AppCompatActivity {
 
-    @Inject RestWebService webService;
+    @Inject NumbersWebService webService;
 
     @Override protected void onCreate(Bundle savedInstanceState) {
         AndroidInjection.inject(this);

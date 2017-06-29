@@ -8,7 +8,7 @@ import static br.ufs.demos.rxmvp.playground.util.Checks.notNullNotEmpty;
 
 public class PayloadValidator {
 
-    public boolean validate(NumbersTriviaPayload payload) {
+    public boolean accept(NumbersTriviaPayload payload) {
         return notNullNotEmpty(payload.entrySet());
     }
 

@@ -2,12 +2,12 @@ package br.ufs.demos.rxmvp.playground.trivia.infrastructure;
 
 import java.util.List;
 
+import br.ufs.demos.rxmvp.playground.networking.NumbersWebService;
 import br.ufs.demos.rxmvp.playground.trivia.domain.FactAboutNumber;
 import br.ufs.demos.rxmvp.playground.trivia.domain.TriviaForNumbersSource;
 import br.ufs.demos.rxmvp.playground.trivia.domain.TriviaGenerator;
-import br.ufs.demos.rxmvp.playground.networking.RestWebService;
 import io.reactivex.Flowable;
-import io.reactivex.schedulers.Schedulers;
+import io.reactivex.Scheduler;
 
 /**
  * Created by bira on 6/27/17.
@@ -15,30 +15,36 @@ import io.reactivex.schedulers.Schedulers;
 
 public class TriviaInfrastructure implements TriviaForNumbersSource {
 
-    RestWebService webService;
-    TriviaGenerator generator;
+    NumbersWebService webService;
+    TriviaGenerator triviaGenerator;
     PayloadMapper mapper;
     PayloadValidator validator;
+    Scheduler executionScheduler;
 
-    public TriviaInfrastructure(RestWebService webService,
-                                TriviaGenerator generator,
+    public TriviaInfrastructure(NumbersWebService webService,
+                                TriviaGenerator triviaGenerator,
                                 PayloadMapper mapper,
-                                PayloadValidator validator) {
+                                PayloadValidator validator,
+                                Scheduler executionScheduler) {
+
         this.webService = webService;
-        this.generator = generator;
+        this.triviaGenerator = triviaGenerator;
         this.mapper = mapper;
         this.validator = validator;
+        this.executionScheduler = executionScheduler;
     }
 
     @Override public Flowable<FactAboutNumber> fetchTrivia() {
 
-        List<Integer> numbersForTrivia = generator.numberForTrivia();
+        List<Integer> numbersForTrivia = triviaGenerator.numberForTrivia();
         String formattedUrlPath = formatPathWithCommas(numbersForTrivia);
 
         return webService
                 .getTrivia(formattedUrlPath)
-                .subscribeOn(Schedulers.io())
-                .filter(payload -> validator.validate(payload))
+                .subscribeOn(executionScheduler)
+                .compose(new RestErrorsHandler<>())
+                .compose(new DeserializationErrorsHandler<>())
+                .filter(payload -> validator.accept(payload))
                 .map(payload -> mapper.toNumberFacts(payload))
                 .flatMap(Flowable::fromIterable);
     }

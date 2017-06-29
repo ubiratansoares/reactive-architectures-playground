@@ -9,7 +9,7 @@ import retrofit2.http.Path;
  * Created by bira on 6/26/17.
  */
 
-public interface RestWebService {
+public interface NumbersWebService {
 
     String BASE_URL = "http://numbersapi.com";
 

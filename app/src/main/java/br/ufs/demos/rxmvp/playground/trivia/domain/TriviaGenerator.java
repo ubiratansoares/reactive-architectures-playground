@@ -12,7 +12,7 @@ public class TriviaGenerator {
 
     private static final int LARGER_NUMBER_TO_LEARN_ABOUT = 200;
     private static final int TRIVIA_COUNT = 10;
-    private static final Random RANDOMZIDER = new Random();
+    private static final Random RANDOMIZER = new Random();
 
     private List<Integer> numbers = new ArrayList<>();
 
@@ -20,7 +20,7 @@ public class TriviaGenerator {
 
         while (numbers.size() < TRIVIA_COUNT) {
 
-            int candidate = RANDOMZIDER.nextInt(LARGER_NUMBER_TO_LEARN_ABOUT);
+            int candidate = RANDOMIZER.nextInt(LARGER_NUMBER_TO_LEARN_ABOUT);
 
             if (!numbers.contains(candidate)) {
                 numbers.add(candidate);
