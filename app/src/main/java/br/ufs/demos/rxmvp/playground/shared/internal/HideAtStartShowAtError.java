@@ -24,6 +24,7 @@ public class HideAtStartShowAtError<T> implements FlowableTransformer<T, T> {
                                   Action atError,
                                   ErrorPredicate errorPredicate,
                                   Scheduler targetScheduler) {
+
         this.whenStart = whenStart;
         this.atError = atError;
         this.errorPredicate = errorPredicate;

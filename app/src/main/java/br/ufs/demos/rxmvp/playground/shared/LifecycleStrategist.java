@@ -18,7 +18,7 @@ public class LifecycleStrategist {
     }
 
     public void applyStrategy(Disposable toDispose) {
-        observer.newSubscription(toDispose);
+        observer.addDisposable(toDispose);
     }
 
 }

@@ -14,7 +14,7 @@ import io.reactivex.FlowableTransformer;
  * Created by bira on 6/29/17.
  */
 
-public class DeserializationErrorsHandler<T> implements FlowableTransformer<T, T> {
+public class DeserializationIssuesHandler<T> implements FlowableTransformer<T, T> {
 
     @Override public Publisher<T> apply(Flowable<T> upstream) {
         return upstream.onErrorResumeNext(this::handleErrorFromDeserializer);

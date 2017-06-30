@@ -15,7 +15,7 @@ public class DisposeStrategy implements LifecycleObserver {
 
     private CompositeDisposable composite = new CompositeDisposable();
 
-    void newSubscription(Disposable toDispose) {
+    void addDisposable(Disposable toDispose) {
         composite.add(toDispose);
     }
 

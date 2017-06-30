@@ -43,7 +43,7 @@ public class TriviaInfrastructure implements GetRandomFacts {
                 .getTrivia(formattedUrlPath)
                 .subscribeOn(executionScheduler)
                 .compose(new RestErrorsHandler<>())
-                .compose(new DeserializationErrorsHandler<>())
+                .compose(new DeserializationIssuesHandler<>())
                 .filter(payload -> validator.accept(payload))
                 .map(payload -> mapper.toNumberFacts(payload))
                 .flatMap(Flowable::fromIterable);
