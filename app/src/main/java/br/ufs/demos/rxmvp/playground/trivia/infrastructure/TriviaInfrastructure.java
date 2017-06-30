@@ -4,7 +4,7 @@ import java.util.List;
 
 import br.ufs.demos.rxmvp.playground.networking.NumbersWebService;
 import br.ufs.demos.rxmvp.playground.trivia.domain.FactAboutNumber;
-import br.ufs.demos.rxmvp.playground.trivia.domain.TriviaForNumbersSource;
+import br.ufs.demos.rxmvp.playground.trivia.domain.GetRandomFacts;
 import br.ufs.demos.rxmvp.playground.trivia.domain.TriviaGenerator;
 import io.reactivex.Flowable;
 import io.reactivex.Scheduler;
@@ -13,7 +13,7 @@ import io.reactivex.Scheduler;
  * Created by bira on 6/27/17.
  */
 
-public class TriviaInfrastructure implements TriviaForNumbersSource {
+public class TriviaInfrastructure implements GetRandomFacts {
 
     NumbersWebService webService;
     TriviaGenerator triviaGenerator;
