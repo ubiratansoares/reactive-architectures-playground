@@ -1,4 +1,4 @@
-package br.ufs.demos.rxmvp.playground;
+package br.ufs.demos.rxmvp.playground.util;
 
 import java.io.File;
 import java.io.FileNotFoundException;

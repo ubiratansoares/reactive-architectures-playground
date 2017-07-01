@@ -13,6 +13,6 @@ import io.reactivex.disposables.Disposable;
 public interface DisplayFactsView
         extends LoadingView, ErrorStateView, EmptyStateView {
 
-    Disposable subscribeWith(Flowable<FactViewModel> flow);
+    Disposable subscribeInto(Flowable<FactViewModel> flow);
 
 }

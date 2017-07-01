@@ -10,15 +10,15 @@ import io.reactivex.disposables.Disposable;
 
 public class LifecycleStrategist {
 
-    private DisposeStrategy observer;
+    private DisposeStrategy strategy;
 
-    public LifecycleStrategist(LifecycleOwner owner, DisposeStrategy observer) {
-        this.observer = observer;
-        owner.getLifecycle().addObserver(observer);
+    public LifecycleStrategist(LifecycleOwner owner, DisposeStrategy strategy) {
+        this.strategy = strategy;
+        owner.getLifecycle().addObserver(strategy);
     }
 
     public void applyStrategy(Disposable toDispose) {
-        observer.addDisposable(toDispose);
+        strategy.addDisposable(toDispose);
     }
 
 }

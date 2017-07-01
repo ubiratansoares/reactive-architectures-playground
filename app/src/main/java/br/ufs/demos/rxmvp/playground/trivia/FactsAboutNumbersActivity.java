@@ -68,7 +68,7 @@ public class FactsAboutNumbersActivity extends AppCompatActivity
         return () -> Log.i("Screen", "hideErrorState");
     }
 
-    @Override public Disposable subscribeWith(Flowable<FactViewModel> flow) {
+    @Override public Disposable subscribeInto(Flowable<FactViewModel> flow) {
         return flow.observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         model -> Log.v("Screen", "next = " + model.toString()),

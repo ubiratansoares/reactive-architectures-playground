@@ -12,15 +12,15 @@ import io.reactivex.functions.Action;
  * Created by bira on 6/29/17.
  */
 
-public class ShowAtStartHideWhenFinish<T> implements FlowableTransformer<T, T> {
+public class ShowAtStartHideWhenDone<T> implements FlowableTransformer<T, T> {
 
     private Action whenStart;
     private Action whenDone;
     private Scheduler targetScheduler;
 
-    public ShowAtStartHideWhenFinish(Action whenStart,
-                                     Action whenDone,
-                                     Scheduler targetScheduler) {
+    public ShowAtStartHideWhenDone(Action whenStart,
+                                   Action whenDone,
+                                   Scheduler targetScheduler) {
         this.whenStart = whenStart;
         this.whenDone = whenDone;
         this.targetScheduler = targetScheduler;

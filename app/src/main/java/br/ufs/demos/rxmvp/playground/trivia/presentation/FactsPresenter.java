@@ -1,11 +1,9 @@
 package br.ufs.demos.rxmvp.playground.trivia.presentation;
 
-import java.util.concurrent.TimeUnit;
-
 import br.ufs.demos.rxmvp.playground.shared.BehavioursCoordinator;
 import br.ufs.demos.rxmvp.playground.shared.LifecycleStrategist;
 import br.ufs.demos.rxmvp.playground.trivia.domain.FactAboutNumber;
-import br.ufs.demos.rxmvp.playground.trivia.domain.ImmutableFactAboutNumber;
+import br.ufs.demos.rxmvp.playground.trivia.domain.GetRandomFacts;
 import io.reactivex.Flowable;
 import io.reactivex.disposables.Disposable;
 
@@ -15,34 +13,30 @@ import io.reactivex.disposables.Disposable;
 
 public class FactsPresenter {
 
-    private BehavioursCoordinator<FactAboutNumber> coordinator;
+    private GetRandomFacts usecase;
     private DisplayFactsView view;
+    private BehavioursCoordinator<FactAboutNumber> coordinator;
     private LifecycleStrategist strategist;
 
-    public FactsPresenter(DisplayFactsView view,
+    public FactsPresenter(GetRandomFacts usecase,
+                          DisplayFactsView view,
                           BehavioursCoordinator coordinator,
                           LifecycleStrategist strategist) {
+
+        this.usecase = usecase;
         this.view = view;
         this.coordinator = coordinator;
         this.strategist = strategist;
     }
 
     public void fetchRandomFacts() {
-        Disposable subscription = view.subscribeWith(dataFlow());
-        strategist.applyStrategy(subscription);
-    }
+        Flowable<FactViewModel> dataFlow =
+                coordinator
+                        .coordinateFlow(usecase.fetchTrivia())
+                        .map(factAboutNumber -> new FactViewModel());
 
-    private Flowable<FactViewModel> dataFlow() {
-        Flowable<FactAboutNumber> flow = success();
-
-        return coordinator.applyBehaviours(flow)
-                .map(factAboutNumber -> new FactViewModel());
-    }
-
-    private Flowable<FactAboutNumber> success() {
-        return Flowable.just(ImmutableFactAboutNumber.of("1", "2"))
-                .cast(FactAboutNumber.class)
-                .delay(3, TimeUnit.SECONDS);
+        Disposable lifecycleAware = view.subscribeInto(dataFlow);
+        strategist.applyStrategy(lifecycleAware);
     }
 
 }
