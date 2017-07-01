@@ -9,7 +9,10 @@ import dagger.android.AndroidInjector;
  */
 
 @Subcomponent(
-        modules = PresentationModule.class)
+        modules = {
+                PresentationModule.class,
+        }
+)
 public interface TriviaComponent extends AndroidInjector<FactsAboutNumbersActivity> {
 
     @Subcomponent.Builder

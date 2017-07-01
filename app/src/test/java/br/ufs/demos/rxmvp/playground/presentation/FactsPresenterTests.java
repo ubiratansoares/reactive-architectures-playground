@@ -17,6 +17,7 @@ import br.ufs.demos.rxmvp.playground.trivia.domain.errors.ContentNotFoundError;
 import br.ufs.demos.rxmvp.playground.trivia.domain.errors.UnexpectedResponseError;
 import br.ufs.demos.rxmvp.playground.trivia.presentation.FactViewModel;
 import br.ufs.demos.rxmvp.playground.trivia.presentation.FactsPresenter;
+import br.ufs.demos.rxmvp.playground.trivia.presentation.ViewModelMapper;
 import br.ufs.demos.rxmvp.playground.util.BehavioursVerifier;
 import br.ufs.demos.rxmvp.playground.util.DataFlowWatcher;
 import io.reactivex.Flowable;
@@ -57,7 +58,13 @@ public class FactsPresenterTests {
                 new LoadingCoordination<>(view, uiScheduler)
         );
 
-        presenter = new FactsPresenter(usecase, view, coordinator, strategist);
+        presenter = new FactsPresenter(
+                usecase,
+                view,
+                coordinator,
+                strategist,
+                new ViewModelMapper()
+        );
     }
 
     @Test public void shouldPresent_AvailableData_IntoView() throws Exception {

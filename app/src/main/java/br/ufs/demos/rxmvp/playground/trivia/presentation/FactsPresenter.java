@@ -17,23 +17,26 @@ public class FactsPresenter {
     private DisplayFactsView view;
     private BehavioursCoordinator<FactAboutNumber> coordinator;
     private LifecycleStrategist strategist;
+    private ViewModelMapper mapper;
 
     public FactsPresenter(GetRandomFacts usecase,
                           DisplayFactsView view,
                           BehavioursCoordinator coordinator,
-                          LifecycleStrategist strategist) {
+                          LifecycleStrategist strategist,
+                          ViewModelMapper mapper) {
 
         this.usecase = usecase;
         this.view = view;
         this.coordinator = coordinator;
         this.strategist = strategist;
+        this.mapper = mapper;
     }
 
     public void fetchRandomFacts() {
         Flowable<FactViewModel> dataFlow =
                 coordinator
                         .coordinateFlow(usecase.fetchTrivia())
-                        .map(factAboutNumber -> new FactViewModel());
+                        .map(fact -> mapper.translateFrom(fact));
 
         Disposable lifecycleAware = view.subscribeInto(dataFlow);
         strategist.applyStrategy(lifecycleAware);

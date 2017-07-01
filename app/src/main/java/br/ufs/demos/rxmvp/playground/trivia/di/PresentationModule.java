@@ -1,6 +1,6 @@
 package br.ufs.demos.rxmvp.playground.trivia.di;
 
-import br.ufs.demos.rxmvp.playground.app.di.UIScheduler;
+import br.ufs.demos.rxmvp.playground.app.di.qualifiers.UIScheduler;
 import br.ufs.demos.rxmvp.playground.shared.BehavioursCoordinator;
 import br.ufs.demos.rxmvp.playground.shared.DisposeStrategy;
 import br.ufs.demos.rxmvp.playground.shared.LifecycleStrategist;
@@ -10,24 +10,25 @@ import br.ufs.demos.rxmvp.playground.shared.loadingcontent.LoadingCoordination;
 import br.ufs.demos.rxmvp.playground.trivia.FactsAboutNumbersActivity;
 import br.ufs.demos.rxmvp.playground.trivia.domain.GetRandomFacts;
 import br.ufs.demos.rxmvp.playground.trivia.presentation.FactsPresenter;
+import br.ufs.demos.rxmvp.playground.trivia.presentation.ViewModelMapper;
 import dagger.Module;
 import dagger.Provides;
-import io.reactivex.Flowable;
 import io.reactivex.Scheduler;
 
 /**
  * Created by bira on 6/26/17.
  */
 
-@Module
+@Module(includes = InfrastructureModule.class)
 public class PresentationModule {
 
     @Provides static FactsPresenter presenter(GetRandomFacts usecase,
                                               FactsAboutNumbersActivity view,
                                               BehavioursCoordinator coordinator,
-                                              LifecycleStrategist strategist) {
+                                              LifecycleStrategist strategist,
+                                              ViewModelMapper mapper) {
 
-        return new FactsPresenter(usecase, view, coordinator, strategist);
+        return new FactsPresenter(usecase, view, coordinator, strategist, mapper);
     }
 
     @Provides static LifecycleStrategist strategist(FactsAboutNumbersActivity activity) {
@@ -57,8 +58,7 @@ public class PresentationModule {
         return new AssignEmptyState(view, scheduler);
     }
 
-    @Provides static GetRandomFacts usecase() {
-        return Flowable::never;
+    @Provides static ViewModelMapper viewModelMapper() {
+        return new ViewModelMapper();
     }
-
 }

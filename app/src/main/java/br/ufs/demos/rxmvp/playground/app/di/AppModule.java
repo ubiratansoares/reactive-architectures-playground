@@ -5,11 +5,14 @@ import android.content.Context;
 
 import javax.inject.Singleton;
 
+import br.ufs.demos.rxmvp.playground.app.di.qualifiers.IOScheduler;
+import br.ufs.demos.rxmvp.playground.app.di.qualifiers.UIScheduler;
 import br.ufs.demos.rxmvp.playground.trivia.di.TriviaComponent;
 import dagger.Module;
 import dagger.Provides;
 import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by bira on 6/26/17.
@@ -22,12 +25,15 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 )
 public class AppModule {
 
-    @Provides @Singleton Context provideContext(Application application) {
+    @Provides @Singleton static Context provideContext(Application application) {
         return application;
     }
 
-    @Provides @Singleton @UIScheduler Scheduler uiScheduler() {
+    @Provides @Singleton @UIScheduler static Scheduler uiScheduler() {
         return AndroidSchedulers.mainThread();
     }
 
+    @Provides @Singleton @IOScheduler static Scheduler ioScheduler() {
+        return Schedulers.io();
+    }
 }
