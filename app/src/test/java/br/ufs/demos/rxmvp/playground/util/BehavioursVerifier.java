@@ -4,7 +4,7 @@ import br.ufs.demos.rxmvp.playground.shared.emptystate.EmptyStateView;
 import br.ufs.demos.rxmvp.playground.shared.errorstate.ErrorStateView;
 import br.ufs.demos.rxmvp.playground.shared.loadingcontent.LoadingView;
 
-import static br.ufs.demos.rxmvp.playground.util.MockitoHelpers.onlyOnce;
+import static br.ufs.demos.rxmvp.playground.util.MockitoHelpers.oneTimeOnly;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 
@@ -27,7 +27,7 @@ public class BehavioursVerifier {
     public BehavioursVerifier shouldShowErrorState() throws Exception {
         checkErrorStateView();
         ErrorStateView view = (ErrorStateView) target;
-        verify(view.showErrorState(), onlyOnce()).run();
+        verify(view.showErrorState(), oneTimeOnly()).run();
         return this;
     }
 
@@ -41,7 +41,7 @@ public class BehavioursVerifier {
     public BehavioursVerifier shouldShowEmptyState() throws Exception {
         checkEmptyStateView();
         EmptyStateView view = (EmptyStateView) target;
-        verify(view.showEmptyState(), onlyOnce()).run();
+        verify(view.showEmptyState(), oneTimeOnly()).run();
         return this;
     }
 
@@ -55,14 +55,14 @@ public class BehavioursVerifier {
     public BehavioursVerifier shouldHideLoading() throws Exception {
         checkLoadingView();
         LoadingView view = (LoadingView) target;
-        verify(view.hideLoading(), onlyOnce()).run();
+        verify(view.hideLoading(), oneTimeOnly()).run();
         return this;
     }
 
     public BehavioursVerifier shouldShowLoading() throws Exception {
         checkLoadingView();
         LoadingView view = (LoadingView) target;
-        verify(view.showLoading(), onlyOnce()).run();
+        verify(view.showLoading(), oneTimeOnly()).run();
         return this;
     }
 

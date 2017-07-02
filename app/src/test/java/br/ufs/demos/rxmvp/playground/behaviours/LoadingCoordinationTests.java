@@ -12,7 +12,7 @@ import io.reactivex.Scheduler;
 import io.reactivex.functions.Action;
 import io.reactivex.schedulers.Schedulers;
 
-import static br.ufs.demos.rxmvp.playground.util.MockitoHelpers.onlyOnce;
+import static br.ufs.demos.rxmvp.playground.util.MockitoHelpers.oneTimeOnly;
 import static org.mockito.Mockito.verify;
 
 /**
@@ -68,8 +68,8 @@ public class LoadingCoordinationTests {
     }
 
     private void checkLoadingCoordinated() throws Exception {
-        verify(hide, onlyOnce()).run();
-        verify(show, onlyOnce()).run();
+        verify(hide, oneTimeOnly()).run();
+        verify(show, oneTimeOnly()).run();
     }
 
 }

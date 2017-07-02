@@ -9,7 +9,7 @@ import org.mockito.verification.VerificationMode;
 
 public class MockitoHelpers {
 
-    public static VerificationMode onlyOnce() {
-        return VerificationModeFactory.atMost(1);
+    public static VerificationMode oneTimeOnly() {
+        return VerificationModeFactory.times(1);
     }
 }

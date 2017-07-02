@@ -7,12 +7,13 @@ import org.mockito.MockitoAnnotations;
 
 import br.ufs.demos.rxmvp.playground.shared.emptystate.AssignEmptyState;
 import br.ufs.demos.rxmvp.playground.shared.emptystate.EmptyStateView;
+import br.ufs.demos.rxmvp.playground.trivia.domain.errors.ContentNotFoundError;
 import io.reactivex.Flowable;
 import io.reactivex.Scheduler;
 import io.reactivex.functions.Action;
 import io.reactivex.schedulers.Schedulers;
 
-import static br.ufs.demos.rxmvp.playground.util.MockitoHelpers.onlyOnce;
+import static br.ufs.demos.rxmvp.playground.util.MockitoHelpers.oneTimeOnly;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 
@@ -50,19 +51,19 @@ public class AssignEmptyStateTests {
                 .compose(assignEmptyness)
                 .subscribe();
 
-        verify(hideEmtpyState, onlyOnce()).run();
+        verify(hideEmtpyState, oneTimeOnly()).run();
         verify(showEmtpyState, never()).run();
     }
 
-    @Test public void shouldNotAssignError_WithEmptyFlow() throws Exception {
+    @Test public void shouldNotAssignEmpty_WithEmptyFlow() throws Exception {
         Flowable<Integer> empty = Flowable.empty();
         empty.compose(assignEmptyness).subscribe();
 
-        verify(hideEmtpyState, onlyOnce()).run();
+        verify(hideEmtpyState, oneTimeOnly()).run();
         verify(showEmtpyState, never()).run();
     }
 
-    @Test public void shouldAssignError_WithErrorAtFlow() throws Exception {
+    @Test public void shouldNotAssignEmpty_WithNotTargetError() throws Exception {
         Flowable<Integer> broken = Flowable.error(new RuntimeException("WTF!!"));
 
         broken.compose(assignEmptyness)
@@ -72,7 +73,21 @@ public class AssignEmptyStateTests {
                         () -> {}
                 );
 
-        verify(hideEmtpyState, onlyOnce()).run();
-        verify(showEmtpyState, onlyOnce()).run();
+        verify(hideEmtpyState, oneTimeOnly()).run();
+        verify(showEmtpyState, never()).run();
+    }
+
+    @Test public void shouldAssignEmpty_WithNoContentError() throws Exception {
+        Flowable<Integer> broken = Flowable.error(new ContentNotFoundError());
+
+        broken.compose(assignEmptyness)
+                .subscribe(
+                        some -> {},
+                        Throwable::printStackTrace,
+                        () -> {}
+                );
+
+        verify(hideEmtpyState, oneTimeOnly()).run();
+        verify(showEmtpyState, oneTimeOnly()).run();
     }
 }

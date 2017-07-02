@@ -13,7 +13,7 @@ import io.reactivex.Scheduler;
 import io.reactivex.functions.Action;
 import io.reactivex.schedulers.Schedulers;
 
-import static br.ufs.demos.rxmvp.playground.util.MockitoHelpers.onlyOnce;
+import static br.ufs.demos.rxmvp.playground.util.MockitoHelpers.oneTimeOnly;
 import static org.mockito.Mockito.verify;
 
 /**
@@ -60,7 +60,7 @@ public class ShowAtStartHideWhenDoneTests {
     }
 
     private void verifyShowAndHideWithFlow() throws Exception {
-        verify(whenStart, onlyOnce()).run();
-        verify(whenDone, onlyOnce()).run();
+        verify(whenStart, oneTimeOnly()).run();
+        verify(whenDone, oneTimeOnly()).run();
     }
 }

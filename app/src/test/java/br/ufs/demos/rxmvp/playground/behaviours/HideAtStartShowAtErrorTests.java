@@ -14,7 +14,7 @@ import io.reactivex.Scheduler;
 import io.reactivex.functions.Action;
 import io.reactivex.schedulers.Schedulers;
 
-import static br.ufs.demos.rxmvp.playground.util.MockitoHelpers.onlyOnce;
+import static br.ufs.demos.rxmvp.playground.util.MockitoHelpers.oneTimeOnly;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyZeroInteractions;
 
@@ -41,7 +41,7 @@ public class HideAtStartShowAtErrorTests {
                 .compose(new HideAtStartShowAtError<>(whenStart, atError, positive, scheduler))
                 .subscribe();
 
-        verify(whenStart, onlyOnce()).run();
+        verify(whenStart, oneTimeOnly()).run();
         verifyZeroInteractions(atError);
     }
 
@@ -50,7 +50,7 @@ public class HideAtStartShowAtErrorTests {
                 .compose(new HideAtStartShowAtError<>(whenStart, atError, positive, scheduler))
                 .subscribe();
 
-        verify(whenStart, onlyOnce()).run();
+        verify(whenStart, oneTimeOnly()).run();
         verifyZeroInteractions(atError);
     }
 
@@ -63,7 +63,7 @@ public class HideAtStartShowAtErrorTests {
                         () -> {}
                 );
 
-        verify(whenStart, onlyOnce()).run();
+        verify(whenStart, oneTimeOnly()).run();
         verifyZeroInteractions(atError);
 
     }
@@ -77,8 +77,8 @@ public class HideAtStartShowAtErrorTests {
                         () -> {}
                 );
 
-        verify(whenStart, onlyOnce()).run();
-        verify(atError, onlyOnce()).run();
+        verify(whenStart, oneTimeOnly()).run();
+        verify(atError, oneTimeOnly()).run();
 
     }
 }

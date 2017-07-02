@@ -3,7 +3,7 @@ package br.ufs.demos.rxmvp.playground.util;
 import io.reactivex.functions.Action;
 import io.reactivex.functions.Consumer;
 
-import static br.ufs.demos.rxmvp.playground.util.MockitoHelpers.onlyOnce;
+import static br.ufs.demos.rxmvp.playground.util.MockitoHelpers.oneTimeOnly;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.atMost;
 import static org.mockito.Mockito.verify;
@@ -47,13 +47,13 @@ public class DataFlowWatcher {
     }
 
     public void shouldFinishWithError() throws Exception {
-        verify(onError, onlyOnce()).accept(any());
+        verify(onError, oneTimeOnly()).accept(any());
         verifyZeroInteractions(onNext);
         verifyZeroInteractions(onError);
     }
 
     public void shouldNotReceiveAnyData() throws Exception {
-        verify(onCompleted, onlyOnce()).run();
+        verify(onCompleted, oneTimeOnly()).run();
         verifyZeroInteractions(onNext);
         verifyZeroInteractions(onError);
     }

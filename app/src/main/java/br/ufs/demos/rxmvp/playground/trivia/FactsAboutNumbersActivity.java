@@ -69,7 +69,8 @@ public class FactsAboutNumbersActivity extends AppCompatActivity
     }
 
     @Override public Disposable subscribeInto(Flowable<FactViewModel> flow) {
-        return flow.observeOn(AndroidSchedulers.mainThread())
+        return flow
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         model -> Log.v("Screen", "next = " + model.toString()),
                         throwable -> Log.e("Screen", "Error -> " + throwable.getMessage()),
