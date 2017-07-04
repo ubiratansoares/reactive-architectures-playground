@@ -6,24 +6,18 @@ package br.ufs.demos.rxmvp.playground.trivia.presentation;
 
 public class FactViewModel {
 
-    public static int DISPLAY_TYPE_HORIZONTAL = 0;
-    public static int DISPLAY_TYPE_VERTICAL = 1;
+    public String number;
+    public String fact;
 
-    String number;
-    String fact;
-    int displayType;
-
-    public FactViewModel(String number, String fact, int displayType) {
+    public FactViewModel(String number, String fact) {
         this.number = number;
         this.fact = fact;
-        this.displayType = displayType;
     }
 
     @Override public String toString() {
         return "FactViewModel{" +
                 "number='" + number + '\'' +
                 ", fact='" + fact + '\'' +
-                ", displayType=" + displayType +
                 '}';
     }
 }

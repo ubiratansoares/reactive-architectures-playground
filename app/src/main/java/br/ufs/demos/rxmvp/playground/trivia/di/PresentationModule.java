@@ -7,7 +7,7 @@ import br.ufs.demos.rxmvp.playground.shared.LifecycleStrategist;
 import br.ufs.demos.rxmvp.playground.shared.emptystate.AssignEmptyState;
 import br.ufs.demos.rxmvp.playground.shared.errorstate.AssignErrorState;
 import br.ufs.demos.rxmvp.playground.shared.loadingcontent.LoadingCoordination;
-import br.ufs.demos.rxmvp.playground.trivia.FactsAboutNumbersActivity;
+import br.ufs.demos.rxmvp.playground.trivia.ui.FactsAboutNumbersActivity;
 import br.ufs.demos.rxmvp.playground.trivia.domain.GetRandomFacts;
 import br.ufs.demos.rxmvp.playground.trivia.presentation.FactsPresenter;
 import br.ufs.demos.rxmvp.playground.trivia.presentation.ViewModelMapper;

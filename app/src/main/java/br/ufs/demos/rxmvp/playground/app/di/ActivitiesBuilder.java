@@ -2,7 +2,7 @@ package br.ufs.demos.rxmvp.playground.app.di;
 
 import android.app.Activity;
 
-import br.ufs.demos.rxmvp.playground.trivia.FactsAboutNumbersActivity;
+import br.ufs.demos.rxmvp.playground.trivia.ui.FactsAboutNumbersActivity;
 import br.ufs.demos.rxmvp.playground.trivia.di.TriviaComponent;
 import dagger.Binds;
 import dagger.Module;

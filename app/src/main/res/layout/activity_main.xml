@@ -3,13 +3,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="br.ufs.demos.rxmvp.playground.trivia.FactsAboutNumbersActivity">
+    tools:context="br.ufs.demos.rxmvp.playground.trivia.ui.FactsAboutNumbersActivity">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview_facts"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="true"
+        android:padding="@dimen/default_rithm" />
 
     <TextView
+        android:id="@+id/label_feedback_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Hello World!" />
+        android:visibility="gone"
+        tools:text="Um erro aconteceu" />
 
     <ProgressBar
         android:id="@+id/progressBar"

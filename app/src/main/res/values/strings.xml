@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MVP Reactive Evolution</string>
+    <string name="feedback_empty_state">Não há trivia disponível</string>
+    <string name="feedback_error_state">Ocorreu um erro ao gerar a trivia ...</string>
 </resources>

@@ -11,13 +11,12 @@ public class ViewModelMapper {
     public FactViewModel translateFrom(FactAboutNumber info) {
         return new FactViewModel(
                 info.number(),
-                info.fact(),
-                defineType(info)
+                defineFact(info.number(), info.fact())
         );
     }
 
-    private int defineType(FactAboutNumber info) {
-        return FactViewModel.DISPLAY_TYPE_VERTICAL;
+    private String defineFact(String number, String fact) {
+        return fact.replace(number + " ", "");
     }
 
 }
