@@ -58,29 +58,28 @@ public class BehavioursVerifier {
     public BehavioursVerifier showLoadingFirstHideLoadingAfter() throws Exception {
         checkLoadingView();
         LoadingView view = (LoadingView) target;
+        verifyInOrderShowAndHide(view);
+        return this;
+    }
 
+    private void verifyInOrderShowAndHide(LoadingView view) throws Exception {
         InOrder inOrder = inOrder(view.showLoading(), view.hideLoading());
         inOrder.verify(view.showLoading(), oneTimeOnly()).run();
         inOrder.verify(view.hideLoading(), oneTimeOnly()).run();
-
-        return this;
     }
 
     private void checkEmptyStateView() {
         if (!(target instanceof EmptyStateView))
             throw new IllegalArgumentException("Target view not instance of EmptyStateView");
-
     }
 
     private void checkErrorStateView() {
         if (!(target instanceof ErrorStateView))
             throw new IllegalArgumentException("Target view not instance of ErrorStateView");
-
     }
 
     private void checkLoadingView() {
         if (!(target instanceof LoadingView))
             throw new IllegalArgumentException("Target view not instance of LoadingView");
-
     }
 }
