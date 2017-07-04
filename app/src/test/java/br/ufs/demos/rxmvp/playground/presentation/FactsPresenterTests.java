@@ -79,10 +79,9 @@ public class FactsPresenterTests {
         presenter.fetchRandomFacts();
 
         BehavioursVerifier.with(view)
-                .shouldShowLoading()
+                .showLoadingFirstHideLoadingAfter()
                 .shouldNotShowEmptyState()
-                .shouldNotShowErrorState()
-                .shouldHideLoading();
+                .shouldNotShowErrorState();
 
         DataFlowWatcher.with(onNext, onError, onCompleted).shouldReceiveItems(2);
 
@@ -96,9 +95,8 @@ public class FactsPresenterTests {
         presenter.fetchRandomFacts();
 
         BehavioursVerifier.with(view)
-                .shouldShowLoading()
+                .showLoadingFirstHideLoadingAfter()
                 .shouldShowEmptyState()
-                .shouldHideLoading()
                 .shouldNotShowErrorState();
 
         DataFlowWatcher.with(onNext, onError, onCompleted).shouldFinishWithError();
@@ -113,10 +111,9 @@ public class FactsPresenterTests {
         presenter.fetchRandomFacts();
 
         BehavioursVerifier.with(view)
-                .shouldShowLoading()
+                .showLoadingFirstHideLoadingAfter()
                 .shouldNotShowEmptyState()
-                .shouldShowErrorState()
-                .shouldHideLoading();
+                .shouldShowErrorState();
 
         DataFlowWatcher.with(onNext, onError, onCompleted).shouldFinishWithError();
 
@@ -131,10 +128,9 @@ public class FactsPresenterTests {
         presenter.fetchRandomFacts();
 
         BehavioursVerifier.with(view)
-                .shouldShowLoading()
+                .showLoadingFirstHideLoadingAfter()
                 .shouldShowErrorState()
-                .shouldNotShowEmptyState()
-                .shouldHideLoading();
+                .shouldNotShowEmptyState();
 
         DataFlowWatcher.with(onNext, onError, onCompleted).shouldFinishWithError();
         verify(strategist, atLeastOnce()).applyStrategy(any());

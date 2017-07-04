@@ -1,10 +1,13 @@
 package br.ufs.demos.rxmvp.playground.util;
 
+import org.mockito.InOrder;
+
 import br.ufs.demos.rxmvp.playground.shared.emptystate.EmptyStateView;
 import br.ufs.demos.rxmvp.playground.shared.errorstate.ErrorStateView;
 import br.ufs.demos.rxmvp.playground.shared.loadingcontent.LoadingView;
 
 import static br.ufs.demos.rxmvp.playground.util.MockitoHelpers.oneTimeOnly;
+import static org.mockito.Mockito.inOrder;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 
@@ -52,17 +55,14 @@ public class BehavioursVerifier {
         return this;
     }
 
-    public BehavioursVerifier shouldHideLoading() throws Exception {
+    public BehavioursVerifier showLoadingFirstHideLoadingAfter() throws Exception {
         checkLoadingView();
         LoadingView view = (LoadingView) target;
-        verify(view.hideLoading(), oneTimeOnly()).run();
-        return this;
-    }
 
-    public BehavioursVerifier shouldShowLoading() throws Exception {
-        checkLoadingView();
-        LoadingView view = (LoadingView) target;
-        verify(view.showLoading(), oneTimeOnly()).run();
+        InOrder inOrder = inOrder(view.showLoading(), view.hideLoading());
+        inOrder.verify(view.showLoading(), oneTimeOnly()).run();
+        inOrder.verify(view.hideLoading(), oneTimeOnly()).run();
+
         return this;
     }
 
