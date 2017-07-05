@@ -28,6 +28,8 @@ import io.reactivex.functions.Action;
 public class FactsAboutNumbersActivity
         extends AppCompatActivity implements DisplayFactsView, LifecycleRegistryOwner {
 
+    private static final String TAG = FactsAboutNumbersActivity.class.getSimpleName();
+
     @BindView(R.id.label_feedback_message) TextView feedbackMessage;
     @BindView(R.id.progressBar) ProgressBar loading;
     @BindView(R.id.recyclerview_facts) RecyclerView factsView;
@@ -87,8 +89,8 @@ public class FactsAboutNumbersActivity
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         model -> adapter.addModel(model),
-                        throwable -> Log.e("Screen", "Error -> " + throwable.getMessage()),
-                        () -> Log.i("Screen", "Done")
+                        throwable -> Log.e(TAG, "Error -> " + throwable.getMessage()),
+                        () -> Log.i(TAG, "Done")
                 );
     }
 
