@@ -17,8 +17,7 @@ public class MainApplication extends Application implements HasActivityInjector 
 
     @Inject DispatchingAndroidInjector<Activity> injector;
 
-    @Override
-    public void onCreate() {
+    @Override public void onCreate() {
         super.onCreate();
         buildTopLevelDependenciesGraph();
     }
@@ -27,12 +26,8 @@ public class MainApplication extends Application implements HasActivityInjector 
         return injector;
     }
 
-    private void buildTopLevelDependenciesGraph() {
-        DaggerAppComponent
-                .builder()
-                .application(this)
-                .build()
-                .inject(this);
+    protected void buildTopLevelDependenciesGraph() {
+        DaggerAppComponent.builder().application(this).build().inject(this);
     }
 
 }

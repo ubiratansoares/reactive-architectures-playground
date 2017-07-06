@@ -35,7 +35,8 @@ public class FactsAboutNumbersActivity
     @BindView(R.id.recyclerview_facts) RecyclerView factsView;
 
     @Inject FactsPresenter presenter;
-    FactsAdapter adapter;
+
+    public FactsAdapter adapter;
 
     @Override protected void onCreate(Bundle savedInstanceState) {
         AndroidInjection.inject(this);

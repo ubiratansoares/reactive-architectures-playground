@@ -13,9 +13,7 @@ import dagger.Provides;
  * Created by bira on 6/26/17.
  */
 
-@Module(includes = {
-        InfrastructureModule.class
-})
+@Module(includes = InfrastructureModule.class)
 public class PresentationModule {
 
     @Provides static FactsPresenter presenter(GetRandomFacts usecase,

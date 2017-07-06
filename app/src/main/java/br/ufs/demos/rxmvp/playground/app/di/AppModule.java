@@ -31,4 +31,5 @@ public class AppModule {
     @Provides @Singleton @IOScheduler static Scheduler ioScheduler() {
         return Schedulers.io();
     }
+
 }

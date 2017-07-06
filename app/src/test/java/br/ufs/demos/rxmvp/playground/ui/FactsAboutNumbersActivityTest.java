@@ -9,10 +9,16 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
+import java.util.Arrays;
+import java.util.List;
+
 import br.ufs.demos.rxmvp.playground.BuildConfig;
 import br.ufs.demos.rxmvp.playground.R;
 import br.ufs.demos.rxmvp.playground.app.MainApplication;
+import br.ufs.demos.rxmvp.playground.trivia.presentation.FactViewModel;
 import br.ufs.demos.rxmvp.playground.trivia.ui.FactsAboutNumbersActivity;
+import br.ufs.demos.rxmvp.playground.trivia.ui.FactsAdapter;
+import io.reactivex.Flowable;
 
 import static butterknife.ButterKnife.findById;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -36,7 +42,7 @@ public class FactsAboutNumbersActivityTest {
         activity = buildActivity(FactsAboutNumbersActivity.class).create().get();
     }
 
-    @Test public void shouldSetupViewsProperly_OnCreate() {
+    @Test public void setupViewsProperly_OnCreate() {
         ProgressBar loading = findById(activity, R.id.progressBar);
         assertThat(loading.getVisibility()).isEqualTo(View.GONE);
 
@@ -44,7 +50,7 @@ public class FactsAboutNumbersActivityTest {
         assertThat(labelMessage.getVisibility()).isEqualTo(View.GONE);
     }
 
-    @Test public void shoulIntegrate_ActionsForLoadingVisibility() throws Exception {
+    @Test public void shoulIntegrateActions_ForLoadingVisibility() throws Exception {
         ProgressBar loading = findById(activity, R.id.progressBar);
 
         activity.showLoading().run();
@@ -54,7 +60,7 @@ public class FactsAboutNumbersActivityTest {
         assertThat(loading.getVisibility()).isEqualTo(View.GONE);
     }
 
-    @Test public void shoulIntegrate_ActionsForErrorState() throws Exception {
+    @Test public void shoulIntegrateActions_ForErrorState() throws Exception {
         View labelMessage = findById(activity, R.id.label_feedback_message);
 
         activity.showErrorState().run();
@@ -64,7 +70,7 @@ public class FactsAboutNumbersActivityTest {
         assertThat(labelMessage.getVisibility()).isEqualTo(View.GONE);
     }
 
-    @Test public void shoulIntegrate_ActionsForErrorEmptyState() throws Exception {
+    @Test public void shoulIntegrateActions_ForErrorEmptyState() throws Exception {
         View labelMessage = findById(activity, R.id.label_feedback_message);
 
         activity.showEmptyState().run();
@@ -74,4 +80,36 @@ public class FactsAboutNumbersActivityTest {
         assertThat(labelMessage.getVisibility()).isEqualTo(View.GONE);
     }
 
+    @Test public void shoulIntegrate_DataDispatching_AvailableData() throws Exception {
+
+        View labelMessage = findById(activity, R.id.label_feedback_message);
+
+        List<FactViewModel> facts = Arrays.asList(
+                new FactViewModel("1", "1 is the first"),
+                new FactViewModel("2", "2 is the second")
+        );
+
+        Flowable<FactViewModel> dataFlow = Flowable.fromIterable(facts);
+        FactsAdapter adapter = activity.adapter;
+
+        activity.subscribeInto(dataFlow);
+
+        assertThat(adapter.getItemCount()).isEqualTo(facts.size());
+        assertThat(labelMessage.getVisibility()).isEqualTo(View.GONE);
+
+    }
+
+    @Test public void shoulIntegrate_DataDispatching_NoData() throws Exception {
+
+        View labelMessage = findById(activity, R.id.label_feedback_message);
+
+        Flowable<FactViewModel> dataFlow = Flowable.empty();
+        FactsAdapter adapter = activity.adapter;
+
+        activity.subscribeInto(dataFlow);
+
+        assertThat(adapter.getItemCount()).isEqualTo(0);
+        assertThat(labelMessage.getVisibility()).isEqualTo(View.GONE);
+
+    }
 }
