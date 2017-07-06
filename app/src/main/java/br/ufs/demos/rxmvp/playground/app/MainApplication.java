@@ -21,7 +21,6 @@ public class MainApplication extends Application implements HasActivityInjector 
     public void onCreate() {
         super.onCreate();
         buildTopLevelDependenciesGraph();
-
     }
 
     @Override public DispatchingAndroidInjector<Activity> activityInjector() {
@@ -35,4 +34,5 @@ public class MainApplication extends Application implements HasActivityInjector 
                 .build()
                 .inject(this);
     }
+
 }

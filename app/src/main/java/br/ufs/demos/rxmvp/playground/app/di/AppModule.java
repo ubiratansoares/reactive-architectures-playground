@@ -7,7 +7,6 @@ import javax.inject.Singleton;
 
 import br.ufs.demos.rxmvp.playground.app.di.qualifiers.IOScheduler;
 import br.ufs.demos.rxmvp.playground.app.di.qualifiers.UIScheduler;
-import br.ufs.demos.rxmvp.playground.trivia.di.TriviaComponent;
 import dagger.Module;
 import dagger.Provides;
 import io.reactivex.Scheduler;
@@ -18,11 +17,7 @@ import io.reactivex.schedulers.Schedulers;
  * Created by bira on 6/26/17.
  */
 
-@Module(
-        subcomponents = {
-                TriviaComponent.class
-        }
-)
+@Module
 public class AppModule {
 
     @Provides @Singleton static Context provideContext(Application application) {
