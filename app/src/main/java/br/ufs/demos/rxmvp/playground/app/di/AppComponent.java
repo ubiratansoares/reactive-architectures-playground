@@ -5,7 +5,7 @@ import android.app.Application;
 import javax.inject.Singleton;
 
 import br.ufs.demos.rxmvp.playground.app.MainApplication;
-import br.ufs.demos.rxmvp.playground.networking.di.RestWebServiceModule;
+import br.ufs.demos.rxmvp.playground.webservice.di.RestWebServiceModule;
 import dagger.BindsInstance;
 import dagger.Component;
 import dagger.android.AndroidInjectionModule;

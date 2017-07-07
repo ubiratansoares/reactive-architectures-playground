@@ -1,8 +1,8 @@
-package br.ufs.demos.rxmvp.playground.networking.di;
+package br.ufs.demos.rxmvp.playground.webservice.di;
 
 import javax.inject.Singleton;
 
-import br.ufs.demos.rxmvp.playground.networking.NumbersWebService;
+import br.ufs.demos.rxmvp.playground.webservice.NumbersWebService;
 import dagger.Module;
 import dagger.Provides;
 import okhttp3.Interceptor;

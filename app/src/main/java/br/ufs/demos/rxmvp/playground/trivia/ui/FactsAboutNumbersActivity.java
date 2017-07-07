@@ -3,6 +3,8 @@ package br.ufs.demos.rxmvp.playground.trivia.ui;
 import android.arch.lifecycle.LifecycleRegistry;
 import android.arch.lifecycle.LifecycleRegistryOwner;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -30,9 +32,11 @@ public class FactsAboutNumbersActivity
 
     private static final String TAG = FactsAboutNumbersActivity.class.getSimpleName();
 
+    @BindView(R.id.container) View container;
     @BindView(R.id.label_feedback_message) TextView feedbackMessage;
     @BindView(R.id.progressBar) ProgressBar loading;
     @BindView(R.id.recyclerview_facts) RecyclerView factsView;
+    @BindView(R.id.fab) FloatingActionButton fab;
 
     @Inject FactsPresenter presenter;
 
@@ -48,7 +52,7 @@ public class FactsAboutNumbersActivity
 
     @Override protected void onResume() {
         super.onResume();
-        presenter.fetchRandomFacts();
+        fetchFacts();
     }
 
     @Override public LifecycleRegistry getLifecycle() {
@@ -85,7 +89,15 @@ public class FactsAboutNumbersActivity
         return () -> feedbackMessage.setVisibility(View.GONE);
     }
 
+    @Override public Action reportNetworkingError() {
+        return () ->
+                Snackbar.make(container, "Erro de conexão. Por favor, tente novamente", Snackbar.LENGTH_INDEFINITE)
+                        .setAction("TENTAR NOVAMENTE", view -> fetchFacts())
+                        .show();
+    }
+
     @Override public Disposable subscribeInto(Flowable<FactViewModel> flow) {
+        adapter.clear();
         return flow
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
@@ -96,8 +108,14 @@ public class FactsAboutNumbersActivity
     }
 
     private void setupViews() {
+        fab.setOnClickListener(view -> fetchFacts());
         adapter = new FactsAdapter();
         factsView.setLayoutManager(new LinearLayoutManager(this));
         factsView.setAdapter(adapter);
     }
+
+    private void fetchFacts() {
+        if (presenter != null) presenter.fetchRandomFacts();
+    }
+
 }

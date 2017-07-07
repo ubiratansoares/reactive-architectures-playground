@@ -1,4 +1,4 @@
-package br.ufs.demos.rxmvp.playground.trivia.infrastructure;
+package br.ufs.demos.rxmvp.playground.shared.rest;
 
 import org.reactivestreams.Publisher;
 
@@ -32,7 +32,7 @@ public class RestErrorsHandler<T> implements FlowableTransformer<T, T> {
     }
 
     private boolean otherRestError(Throwable throwable) {
-        return !notFound(throwable);
+        return !notFound(throwable) && (throwable instanceof HttpException);
     }
 
     private boolean notFound(Throwable throwable) {

@@ -1,7 +1,7 @@
 package br.ufs.demos.rxmvp.playground.trivia.presentation;
 
 import br.ufs.demos.rxmvp.playground.shared.BehavioursCoordinator;
-import br.ufs.demos.rxmvp.playground.shared.LifecycleStrategist;
+import br.ufs.demos.rxmvp.playground.shared.lifecyclestrategy.LifecycleStrategist;
 import br.ufs.demos.rxmvp.playground.trivia.domain.FactAboutNumber;
 import br.ufs.demos.rxmvp.playground.trivia.domain.GetRandomFacts;
 import io.reactivex.Flowable;

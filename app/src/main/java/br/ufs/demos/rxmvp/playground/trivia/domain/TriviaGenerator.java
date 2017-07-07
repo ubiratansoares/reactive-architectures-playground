@@ -18,6 +18,8 @@ public class TriviaGenerator {
 
     public List<Integer> numberForTrivia() {
 
+        numbers.clear();
+
         while (numbers.size() < TRIVIA_COUNT) {
 
             int candidate = RANDOMIZER.nextInt(LARGER_NUMBER_TO_LEARN_ABOUT);

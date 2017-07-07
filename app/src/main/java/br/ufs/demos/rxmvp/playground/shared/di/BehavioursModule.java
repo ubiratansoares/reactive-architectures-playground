@@ -8,6 +8,8 @@ import br.ufs.demos.rxmvp.playground.shared.errorstate.AssignErrorState;
 import br.ufs.demos.rxmvp.playground.shared.errorstate.ErrorStateView;
 import br.ufs.demos.rxmvp.playground.shared.loadingcontent.LoadingCoordination;
 import br.ufs.demos.rxmvp.playground.shared.loadingcontent.LoadingView;
+import br.ufs.demos.rxmvp.playground.shared.networking.NetworkingErrorView;
+import br.ufs.demos.rxmvp.playground.shared.networking.NetworkingErrorFeedback;
 import dagger.Module;
 import dagger.Provides;
 import io.reactivex.Scheduler;
@@ -22,9 +24,14 @@ public class BehavioursModule {
     @Provides static BehavioursCoordinator coordinator(
             AssignEmptyState assignEmptyState,
             AssignErrorState assignErrorState,
-            LoadingCoordination loadingCoordination) {
+            LoadingCoordination loadingCoordination,
+            NetworkingErrorFeedback networkingErrorFeedback) {
 
-        return new BehavioursCoordinator(assignEmptyState, assignErrorState, loadingCoordination);
+        return new BehavioursCoordinator(
+                assignEmptyState,
+                assignErrorState,
+                loadingCoordination,
+                networkingErrorFeedback);
     }
 
     @Provides static LoadingCoordination loadingCoordinator(LoadingView view,
@@ -40,6 +47,11 @@ public class BehavioursModule {
     @Provides static AssignEmptyState coordinateEmptyState(EmptyStateView view,
                                                            @UIScheduler Scheduler scheduler) {
         return new AssignEmptyState(view, scheduler);
+    }
+
+    @Provides static NetworkingErrorFeedback networkingFeedback(NetworkingErrorView view,
+                                                                @UIScheduler Scheduler scheduler) {
+        return new NetworkingErrorFeedback(view, scheduler);
     }
 
 }

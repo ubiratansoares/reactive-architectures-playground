@@ -2,7 +2,9 @@ package br.ufs.demos.rxmvp.playground.behaviours;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.InOrder;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import br.ufs.demos.rxmvp.playground.shared.loadingcontent.LoadingCoordination;
@@ -13,7 +15,6 @@ import io.reactivex.functions.Action;
 import io.reactivex.schedulers.Schedulers;
 
 import static br.ufs.demos.rxmvp.playground.util.MockitoHelpers.oneTimeOnly;
-import static org.mockito.Mockito.verify;
 
 /**
  * Created by bira on 6/30/17.
@@ -24,15 +25,15 @@ public class LoadingCoordinationTests {
     Scheduler uiScheduler = Schedulers.trampoline();
     LoadingCoordination<String> loadingCoordination;
 
-    @Mock Action show;
-    @Mock Action hide;
+    @Mock Action showAction;
+    @Mock Action hideAction;
     
     @Before public void beforeEachTest() {
         MockitoAnnotations.initMocks(this);
 
         LoadingView view = new LoadingView() {
-            @Override public Action showLoading() {return show;}
-            @Override public Action hideLoading() {return hide;}
+            @Override public Action showLoading() {return showAction;}
+            @Override public Action hideLoading() {return hideAction;}
         };
 
         loadingCoordination = new LoadingCoordination<>(view, uiScheduler);
@@ -68,8 +69,9 @@ public class LoadingCoordinationTests {
     }
 
     private void checkLoadingCoordinated() throws Exception {
-        verify(hide, oneTimeOnly()).run();
-        verify(show, oneTimeOnly()).run();
+        InOrder inOrder = Mockito.inOrder(showAction, hideAction);
+        inOrder.verify(showAction, oneTimeOnly()).run();
+        inOrder.verify(hideAction, oneTimeOnly()).run();
     }
 
 }

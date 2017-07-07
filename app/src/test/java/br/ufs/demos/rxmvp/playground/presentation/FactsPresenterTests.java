@@ -6,10 +6,11 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import br.ufs.demos.rxmvp.playground.shared.BehavioursCoordinator;
-import br.ufs.demos.rxmvp.playground.shared.LifecycleStrategist;
+import br.ufs.demos.rxmvp.playground.shared.lifecyclestrategy.LifecycleStrategist;
 import br.ufs.demos.rxmvp.playground.shared.emptystate.AssignEmptyState;
 import br.ufs.demos.rxmvp.playground.shared.errorstate.AssignErrorState;
 import br.ufs.demos.rxmvp.playground.shared.loadingcontent.LoadingCoordination;
+import br.ufs.demos.rxmvp.playground.shared.networking.NetworkingErrorFeedback;
 import br.ufs.demos.rxmvp.playground.trivia.domain.FactAboutNumber;
 import br.ufs.demos.rxmvp.playground.trivia.domain.GetRandomFacts;
 import br.ufs.demos.rxmvp.playground.trivia.domain.ImmutableFactAboutNumber;
@@ -55,7 +56,8 @@ public class FactsPresenterTests {
         BehavioursCoordinator<FactAboutNumber> coordinator = new BehavioursCoordinator<>(
                 new AssignEmptyState<>(view, uiScheduler),
                 new AssignErrorState<>(view, uiScheduler),
-                new LoadingCoordination<>(view, uiScheduler)
+                new LoadingCoordination<>(view, uiScheduler),
+                new NetworkingErrorFeedback<>(view, uiScheduler)
         );
 
         presenter = new FactsPresenter(

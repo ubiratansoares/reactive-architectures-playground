@@ -1,4 +1,4 @@
-package br.ufs.demos.rxmvp.playground.trivia.infrastructure;
+package br.ufs.demos.rxmvp.playground.shared.rest;
 
 import com.google.gson.JsonIOException;
 import com.google.gson.JsonParseException;

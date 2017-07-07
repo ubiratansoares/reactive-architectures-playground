@@ -22,6 +22,7 @@ public class FakeDisplayFactsView implements DisplayFactsView {
     @Mock private Action hideErrorAction;
     @Mock private Action showLoadingAction;
     @Mock private Action hideLoadingAction;
+    @Mock private Action reportNetworkingErrorAction;
 
     private Consumer<FactViewModel> modelConsumer;
     private Consumer<Throwable> errorConsumer;
@@ -61,7 +62,13 @@ public class FakeDisplayFactsView implements DisplayFactsView {
         return hideLoadingAction;
     }
 
+    @Override public Action reportNetworkingError() {
+        return reportNetworkingErrorAction;
+    }
+    
     @Override public Disposable subscribeInto(Flowable<FactViewModel> flow) {
         return flow.subscribe(modelConsumer, errorConsumer, done);
     }
+
+
 }

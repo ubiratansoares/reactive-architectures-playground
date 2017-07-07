@@ -1,4 +1,4 @@
-package br.ufs.demos.rxmvp.playground.networking;
+package br.ufs.demos.rxmvp.playground.webservice;
 
 import br.ufs.demos.rxmvp.playground.trivia.infrastructure.NumbersTriviaPayload;
 import io.reactivex.Flowable;

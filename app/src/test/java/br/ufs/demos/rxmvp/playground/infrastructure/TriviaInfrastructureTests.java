@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import java.io.IOException;
 
-import br.ufs.demos.rxmvp.playground.networking.NumbersWebService;
+import br.ufs.demos.rxmvp.playground.webservice.NumbersWebService;
 import br.ufs.demos.rxmvp.playground.trivia.domain.TriviaGenerator;
 import br.ufs.demos.rxmvp.playground.trivia.domain.errors.ContentNotFoundError;
 import br.ufs.demos.rxmvp.playground.trivia.domain.errors.UnexpectedResponseError;

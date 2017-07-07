@@ -2,7 +2,10 @@ package br.ufs.demos.rxmvp.playground.trivia.infrastructure;
 
 import java.util.List;
 
-import br.ufs.demos.rxmvp.playground.networking.NumbersWebService;
+import br.ufs.demos.rxmvp.playground.shared.rest.DeserializationIssuesHandler;
+import br.ufs.demos.rxmvp.playground.shared.rest.RestErrorsHandler;
+import br.ufs.demos.rxmvp.playground.webservice.NumbersWebService;
+import br.ufs.demos.rxmvp.playground.shared.networking.NetworkingErrorHandler;
 import br.ufs.demos.rxmvp.playground.trivia.domain.FactAboutNumber;
 import br.ufs.demos.rxmvp.playground.trivia.domain.GetRandomFacts;
 import br.ufs.demos.rxmvp.playground.trivia.domain.TriviaGenerator;
@@ -42,6 +45,7 @@ public class TriviaInfrastructure implements GetRandomFacts {
         return webService
                 .getTrivia(formattedUrlPath)
                 .subscribeOn(executionScheduler)
+                .compose(new NetworkingErrorHandler<>())
                 .compose(new RestErrorsHandler<>())
                 .compose(new DeserializationIssuesHandler<>())
                 .filter(payload -> validator.accept(payload))

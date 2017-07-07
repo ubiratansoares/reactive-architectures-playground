@@ -1,7 +1,7 @@
 package br.ufs.demos.rxmvp.playground.trivia.di;
 
 import br.ufs.demos.rxmvp.playground.app.di.qualifiers.IOScheduler;
-import br.ufs.demos.rxmvp.playground.networking.NumbersWebService;
+import br.ufs.demos.rxmvp.playground.webservice.NumbersWebService;
 import br.ufs.demos.rxmvp.playground.trivia.domain.GetRandomFacts;
 import br.ufs.demos.rxmvp.playground.trivia.domain.TriviaGenerator;
 import br.ufs.demos.rxmvp.playground.trivia.infrastructure.PayloadMapper;

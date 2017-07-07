@@ -7,6 +7,7 @@ import br.ufs.demos.rxmvp.playground.shared.di.LifecycleStrategistModule;
 import br.ufs.demos.rxmvp.playground.shared.emptystate.EmptyStateView;
 import br.ufs.demos.rxmvp.playground.shared.errorstate.ErrorStateView;
 import br.ufs.demos.rxmvp.playground.shared.loadingcontent.LoadingView;
+import br.ufs.demos.rxmvp.playground.shared.networking.NetworkingErrorView;
 import br.ufs.demos.rxmvp.playground.trivia.presentation.DisplayFactsView;
 import br.ufs.demos.rxmvp.playground.trivia.ui.FactsAboutNumbersActivity;
 import dagger.Module;
@@ -41,6 +42,9 @@ public class FactsAboutNumbersModule {
         return activity;
     }
 
+    @Provides static NetworkingErrorView networkingErrorView(FactsAboutNumbersActivity activity) {
+        return activity;
+    }
     @Provides static LifecycleOwner strategist(FactsAboutNumbersActivity activity) {
         return activity;
     }

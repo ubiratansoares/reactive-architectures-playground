@@ -29,6 +29,11 @@ public class FactsAdapter extends RecyclerView.Adapter<FactsAdapter.FactHolder> 
         notifyItemInserted(actualPosition);
     }
 
+    public void clear() {
+        models.clear();
+        notifyDataSetChanged();
+    }
+
     @Override public FactHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Context host = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(host);

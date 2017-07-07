@@ -1,4 +1,4 @@
-package br.ufs.demos.rxmvp.playground.shared;
+package br.ufs.demos.rxmvp.playground.shared.lifecyclestrategy;
 
 import android.arch.lifecycle.Lifecycle;
 import android.arch.lifecycle.LifecycleObserver;
