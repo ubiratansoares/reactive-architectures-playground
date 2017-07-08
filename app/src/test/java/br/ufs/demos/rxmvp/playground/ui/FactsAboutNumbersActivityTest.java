@@ -80,6 +80,18 @@ public class FactsAboutNumbersActivityTest {
         assertThat(labelMessage.getVisibility()).isEqualTo(View.GONE);
     }
 
+    @Test public void shoulIntegrateAction_ForNetworkingErrorFeedback() throws Exception {
+
+        activity.reportNetworkingError().run();
+
+        // From design_layout_snackbar_include.xml, since Snackbar does not
+        // have an id assigned at his own container
+        View snackText = findById(activity, R.id.snackbar_text);
+
+        assertThat(snackText).isNotNull();
+        assertThat(snackText.getVisibility()).isEqualTo(View.VISIBLE);
+    }
+
     @Test public void shoulIntegrate_DataDispatching_AvailableData() throws Exception {
 
         View labelMessage = findById(activity, R.id.label_feedback_message);
