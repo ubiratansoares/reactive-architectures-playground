@@ -2,7 +2,7 @@ package br.ufs.demos.rxmvp.playground.shared.emptystate;
 
 import org.reactivestreams.Publisher;
 
-import br.ufs.demos.rxmvp.playground.shared.internal.HideAtStartShowAtError;
+import br.ufs.demos.rxmvp.playground.shared.HideAtStartShowAtError;
 import br.ufs.demos.rxmvp.playground.trivia.domain.errors.ContentNotFoundError;
 import io.reactivex.Flowable;
 import io.reactivex.FlowableTransformer;

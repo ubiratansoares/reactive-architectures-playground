@@ -1,4 +1,4 @@
-package br.ufs.demos.rxmvp.playground.shared.internal;
+package br.ufs.demos.rxmvp.playground.shared;
 
 import org.reactivestreams.Publisher;
 

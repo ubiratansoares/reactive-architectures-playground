@@ -46,7 +46,7 @@ public class FactsViewModelMapperTests {
     }
 
     @Test public void shouldMap_Above50Chars_AsSingleLabelModel() {
-        String text = "Another text that is much, much larger than 49 characters"; // 57 chars
+        String text = "Another text that is much, much larger than 50 characters"; // 57 chars
         FactAboutNumber fact = FactAboutNumber.of("17", text);
         FactViewModel model = mapper.translate(fact);
         assertThat(model).isInstanceOf(ComposedWithSpannedStyles.class);
