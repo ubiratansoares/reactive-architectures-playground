@@ -4,7 +4,6 @@ package br.ufs.demos.rxmvp.playground.trivia.infrastructure;
 import java.util.List;
 
 import br.ufs.demos.rxmvp.playground.trivia.domain.FactAboutNumber;
-import br.ufs.demos.rxmvp.playground.trivia.domain.ImmutableFactAboutNumber;
 import ix.Ix;
 
 /**
@@ -16,7 +15,7 @@ public class PayloadMapper {
     public List<FactAboutNumber> toNumberFacts(NumbersTriviaPayload payload) {
 
         return Ix.from(payload.entrySet())
-                .map(entry -> ImmutableFactAboutNumber.of(entry.getKey(), entry.getValue()))
+                .map(entry -> FactAboutNumber.of(entry.getKey(), entry.getValue()))
                 .cast(FactAboutNumber.class)
                 .toList();
     }

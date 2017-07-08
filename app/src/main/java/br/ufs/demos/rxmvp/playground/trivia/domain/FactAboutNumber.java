@@ -1,19 +1,27 @@
 package br.ufs.demos.rxmvp.playground.trivia.domain;
 
-import org.immutables.value.Value;
-
-import br.ufs.demos.rxmvp.playground.util.WithFactoryPattern;
-
 /**
  * Created by bira on 6/26/17.
  */
 
-@Value.Immutable
-@WithFactoryPattern
-public interface FactAboutNumber {
+public class FactAboutNumber {
 
-    String number();
+    public String number;
+    public String fact;
 
-    String fact();
+    private FactAboutNumber(String number, String fact) {
+        this.number = number;
+        this.fact = fact;
+    }
 
+    public static FactAboutNumber of(String number, String fact) {
+        return new FactAboutNumber(number, fact);
+    }
+
+    @Override public String toString() {
+        return "FactAboutNumber{" +
+                "number='" + number + '\'' +
+                ", fact='" + fact + '\'' +
+                '}';
+    }
 }

@@ -10,16 +10,16 @@ import br.ufs.demos.rxmvp.playground.shared.lifecyclestrategy.LifecycleStrategis
 import br.ufs.demos.rxmvp.playground.shared.emptystate.AssignEmptyState;
 import br.ufs.demos.rxmvp.playground.shared.errorstate.AssignErrorState;
 import br.ufs.demos.rxmvp.playground.shared.loadingcontent.LoadingCoordination;
+import br.ufs.demos.rxmvp.playground.shared.networking.NetworkingError;
 import br.ufs.demos.rxmvp.playground.shared.networking.NetworkingErrorFeedback;
 import br.ufs.demos.rxmvp.playground.trivia.domain.FactAboutNumber;
 import br.ufs.demos.rxmvp.playground.trivia.domain.GetRandomFacts;
-import br.ufs.demos.rxmvp.playground.trivia.domain.ImmutableFactAboutNumber;
 import br.ufs.demos.rxmvp.playground.trivia.domain.errors.ContentNotFoundError;
 import br.ufs.demos.rxmvp.playground.trivia.domain.errors.UnexpectedResponseError;
 import br.ufs.demos.rxmvp.playground.trivia.presentation.FactViewModel;
 import br.ufs.demos.rxmvp.playground.trivia.presentation.FactsPresenter;
 import br.ufs.demos.rxmvp.playground.trivia.presentation.ViewModelMapper;
-import br.ufs.demos.rxmvp.playground.util.BehavioursVerifier;
+import br.ufs.demos.rxmvp.playground.util.BehavioursRobot;
 import br.ufs.demos.rxmvp.playground.util.DataFlowWatcher;
 import io.reactivex.Flowable;
 import io.reactivex.Scheduler;
@@ -72,18 +72,19 @@ public class FactsPresenterTests {
     @Test public void shouldPresent_AvailableData_IntoView() throws Exception {
 
         Flowable<FactAboutNumber> data = Flowable.just(
-                ImmutableFactAboutNumber.of("1", "1 is the first"),
-                ImmutableFactAboutNumber.of("2", "2 is the second")
+                FactAboutNumber.of("1", "1 is the first"),
+                FactAboutNumber.of("2", "2 is the second")
         );
 
         when(usecase.fetchTrivia()).thenReturn(data);
 
         presenter.fetchRandomFacts();
 
-        BehavioursVerifier.with(view)
+        BehavioursRobot.with(view)
                 .showLoadingFirstHideLoadingAfter()
                 .shouldNotShowEmptyState()
-                .shouldNotShowErrorState();
+                .shouldNotShowErrorState()
+                .shouldNotReportNetworkingError();
 
         DataFlowWatcher.with(onNext, onError, onCompleted).shouldReceiveItems(2);
 
@@ -96,10 +97,12 @@ public class FactsPresenterTests {
         when(usecase.fetchTrivia()).thenReturn(noContent);
         presenter.fetchRandomFacts();
 
-        BehavioursVerifier.with(view)
+        BehavioursRobot.with(view)
                 .showLoadingFirstHideLoadingAfter()
                 .shouldShowEmptyState()
-                .shouldNotShowErrorState();
+                .shouldNotShowErrorState()
+                .shouldNotReportNetworkingError();
+
 
         DataFlowWatcher.with(onNext, onError, onCompleted).shouldFinishWithError();
 
@@ -112,10 +115,12 @@ public class FactsPresenterTests {
         when(usecase.fetchTrivia()).thenReturn(error5xx);
         presenter.fetchRandomFacts();
 
-        BehavioursVerifier.with(view)
+        BehavioursRobot.with(view)
                 .showLoadingFirstHideLoadingAfter()
                 .shouldNotShowEmptyState()
-                .shouldShowErrorState();
+                .shouldShowErrorState()
+                .shouldNotReportNetworkingError();
+
 
         DataFlowWatcher.with(onNext, onError, onCompleted).shouldFinishWithError();
 
@@ -129,13 +134,32 @@ public class FactsPresenterTests {
 
         presenter.fetchRandomFacts();
 
-        BehavioursVerifier.with(view)
+        BehavioursRobot.with(view)
                 .showLoadingFirstHideLoadingAfter()
                 .shouldShowErrorState()
-                .shouldNotShowEmptyState();
+                .shouldNotShowEmptyState()
+                .shouldNotReportNetworkingError();
+
 
         DataFlowWatcher.with(onNext, onError, onCompleted).shouldFinishWithError();
         verify(strategist, atLeastOnce()).applyStrategy(any());
     }
 
+    @Test public void shouldReport_NetworkingError_IntoView() throws Exception {
+
+        Flowable<FactAboutNumber> broken = Flowable.error(new NetworkingError("Timeout"));
+        when(usecase.fetchTrivia()).thenReturn(broken);
+
+        presenter.fetchRandomFacts();
+
+        BehavioursRobot.with(view)
+                .showLoadingFirstHideLoadingAfter()
+                .shouldShowErrorState()
+                .shouldNotShowEmptyState()
+                .shouldReportNetworkingError();
+
+
+        DataFlowWatcher.with(onNext, onError, onCompleted).shouldFinishWithError();
+        verify(strategist, atLeastOnce()).applyStrategy(any());
+    }
 }

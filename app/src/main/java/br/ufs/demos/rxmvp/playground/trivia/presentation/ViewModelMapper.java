@@ -10,8 +10,8 @@ public class ViewModelMapper {
 
     public FactViewModel translateFrom(FactAboutNumber info) {
         return new FactViewModel(
-                info.number(),
-                defineFact(info.number(), info.fact())
+                info.number,
+                defineFact(info.number, info.fact)
         );
     }
 
