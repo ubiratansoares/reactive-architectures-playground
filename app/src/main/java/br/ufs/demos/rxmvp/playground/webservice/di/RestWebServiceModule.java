@@ -40,7 +40,7 @@ public class RestWebServiceModule {
 
     @Provides @Singleton static Interceptor logger() {
         HttpLoggingInterceptor logger = new HttpLoggingInterceptor();
-        logger.setLevel(HttpLoggingInterceptor.Level.HEADERS);
+        logger.setLevel(HttpLoggingInterceptor.Level.BODY);
         return logger;
     }
 }

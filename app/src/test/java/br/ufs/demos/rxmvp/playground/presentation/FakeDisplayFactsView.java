@@ -4,7 +4,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import br.ufs.demos.rxmvp.playground.trivia.presentation.DisplayFactsView;
-import br.ufs.demos.rxmvp.playground.trivia.presentation.models.NumberAndFact;
+import br.ufs.demos.rxmvp.playground.trivia.presentation.models.FactViewModel;
 import io.reactivex.Flowable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Action;
@@ -24,11 +24,11 @@ public class FakeDisplayFactsView implements DisplayFactsView {
     @Mock private Action hideLoadingAction;
     @Mock private Action reportNetworkingErrorAction;
 
-    private Consumer<NumberAndFact> modelConsumer;
+    private Consumer<FactViewModel> modelConsumer;
     private Consumer<Throwable> errorConsumer;
     private Action done;
 
-    public FakeDisplayFactsView(Consumer<NumberAndFact> modelConsumer,
+    public FakeDisplayFactsView(Consumer<FactViewModel> modelConsumer,
                                 Consumer<Throwable> errorConsumer,
                                 Action done) {
 
@@ -66,7 +66,7 @@ public class FakeDisplayFactsView implements DisplayFactsView {
         return reportNetworkingErrorAction;
     }
     
-    @Override public Disposable subscribeInto(Flowable<NumberAndFact> flow) {
+    @Override public Disposable subscribeInto(Flowable<FactViewModel> flow) {
         return flow.subscribe(modelConsumer, errorConsumer, done);
     }
 

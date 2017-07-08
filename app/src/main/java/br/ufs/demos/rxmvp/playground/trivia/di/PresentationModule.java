@@ -1,5 +1,7 @@
 package br.ufs.demos.rxmvp.playground.trivia.di;
 
+import android.content.Context;
+
 import br.ufs.demos.rxmvp.playground.shared.BehavioursCoordinator;
 import br.ufs.demos.rxmvp.playground.shared.lifecyclestrategy.LifecycleStrategist;
 import br.ufs.demos.rxmvp.playground.trivia.domain.GetRandomFacts;
@@ -25,7 +27,7 @@ public class PresentationModule {
         return new FactsPresenter(usecase, view, coordinator, strategist, mapper);
     }
 
-    @Provides static FactsViewModelMapper viewModelMapper() {
-        return new FactsViewModelMapper();
+    @Provides static FactsViewModelMapper viewModelMapper(Context context) {
+        return new FactsViewModelMapper(context);
     }
 }

@@ -25,6 +25,10 @@ public class NumberAndFact implements FactViewModel {
         return fact;
     }
 
+    @Override public int viewType() {
+        return TYPE_TWO_LABELS;
+    }
+
     public String relatedNumber() {
         return number;
     }

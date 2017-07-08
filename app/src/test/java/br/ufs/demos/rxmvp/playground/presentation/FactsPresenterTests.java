@@ -6,9 +6,9 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import br.ufs.demos.rxmvp.playground.shared.BehavioursCoordinator;
-import br.ufs.demos.rxmvp.playground.shared.lifecyclestrategy.LifecycleStrategist;
 import br.ufs.demos.rxmvp.playground.shared.emptystate.AssignEmptyState;
 import br.ufs.demos.rxmvp.playground.shared.errorstate.AssignErrorState;
+import br.ufs.demos.rxmvp.playground.shared.lifecyclestrategy.LifecycleStrategist;
 import br.ufs.demos.rxmvp.playground.shared.loadingcontent.LoadingCoordination;
 import br.ufs.demos.rxmvp.playground.shared.networking.NetworkingError;
 import br.ufs.demos.rxmvp.playground.shared.networking.NetworkingErrorFeedback;
@@ -16,9 +16,9 @@ import br.ufs.demos.rxmvp.playground.trivia.domain.FactAboutNumber;
 import br.ufs.demos.rxmvp.playground.trivia.domain.GetRandomFacts;
 import br.ufs.demos.rxmvp.playground.trivia.domain.errors.ContentNotFoundError;
 import br.ufs.demos.rxmvp.playground.trivia.domain.errors.UnexpectedResponseError;
-import br.ufs.demos.rxmvp.playground.trivia.presentation.models.NumberAndFact;
 import br.ufs.demos.rxmvp.playground.trivia.presentation.FactsPresenter;
-import br.ufs.demos.rxmvp.playground.trivia.presentation.FactsViewModelMapper;
+import br.ufs.demos.rxmvp.playground.trivia.presentation.models.FactViewModel;
+import br.ufs.demos.rxmvp.playground.trivia.presentation.models.NumberAndFact;
 import br.ufs.demos.rxmvp.playground.util.BehavioursRobot;
 import br.ufs.demos.rxmvp.playground.util.DataFlowWatcher;
 import io.reactivex.Flowable;
@@ -43,7 +43,7 @@ public class FactsPresenterTests {
 
     @Mock LifecycleStrategist strategist;
     @Mock GetRandomFacts usecase;
-    @Mock Consumer<NumberAndFact> onNext;
+    @Mock Consumer<FactViewModel> onNext;
     @Mock Consumer<Throwable> onError;
     @Mock Action onCompleted;
 
@@ -65,7 +65,7 @@ public class FactsPresenterTests {
                 view,
                 coordinator,
                 strategist,
-                new FactsViewModelMapper()
+                domainData -> new NumberAndFact(domainData.number, domainData.fact)
         );
     }
 

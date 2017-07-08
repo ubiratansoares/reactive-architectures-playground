@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -17,9 +18,8 @@ import javax.inject.Inject;
 
 import br.ufs.demos.rxmvp.playground.R;
 import br.ufs.demos.rxmvp.playground.trivia.presentation.DisplayFactsView;
-import br.ufs.demos.rxmvp.playground.trivia.presentation.models.FactViewModel;
-import br.ufs.demos.rxmvp.playground.trivia.presentation.models.NumberAndFact;
 import br.ufs.demos.rxmvp.playground.trivia.presentation.FactsPresenter;
+import br.ufs.demos.rxmvp.playground.trivia.presentation.models.FactViewModel;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import dagger.android.AndroidInjection;
@@ -110,7 +110,7 @@ public class FactsAboutNumbersActivity
 
     private void setupViews() {
         fab.setOnClickListener(view -> fetchFacts());
-        adapter = new FactsAdapter();
+        adapter = new FactsAdapter(LayoutInflater.from(this));
         factsView.setLayoutManager(new LinearLayoutManager(this));
         factsView.setAdapter(adapter);
     }

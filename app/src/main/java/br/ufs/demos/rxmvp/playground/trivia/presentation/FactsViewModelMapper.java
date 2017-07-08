@@ -1,6 +1,12 @@
 package br.ufs.demos.rxmvp.playground.trivia.presentation;
 
+import android.content.Context;
+import android.support.v4.content.ContextCompat;
+import android.text.style.ForegroundColorSpan;
+
+import br.ufs.demos.rxmvp.playground.R;
 import br.ufs.demos.rxmvp.playground.trivia.domain.FactAboutNumber;
+import br.ufs.demos.rxmvp.playground.trivia.presentation.models.ComposedWithSpannedStyles;
 import br.ufs.demos.rxmvp.playground.trivia.presentation.models.FactViewModel;
 import br.ufs.demos.rxmvp.playground.trivia.presentation.models.NumberAndFact;
 import br.ufs.demos.rxmvp.playground.util.DomainToViewModel;
@@ -10,6 +16,13 @@ import br.ufs.demos.rxmvp.playground.util.DomainToViewModel;
  */
 
 public class FactsViewModelMapper implements DomainToViewModel<FactAboutNumber, FactViewModel> {
+
+    private static final int MAX_CHARS_FOR_SMALL_FACT = 50;
+    private Context context;
+
+    public FactsViewModelMapper(Context context) {
+        this.context = context;
+    }
 
     @Override public FactViewModel translate(FactAboutNumber fact) {
         if (isFactTooLarge(fact)) return composedWithSpans(fact);
@@ -24,7 +37,14 @@ public class FactsViewModelMapper implements DomainToViewModel<FactAboutNumber, 
     }
 
     private FactViewModel composedWithSpans(FactAboutNumber fact) {
-        return null;
+
+        int accent = ContextCompat.getColor(context, R.color.colorAccent);
+
+        return ComposedWithSpannedStyles.with(
+                fact.number,
+                " " + formatFact(fact.number, fact.fact),
+                new ForegroundColorSpan(accent)
+        );
     }
 
     private String formatFact(String number, String fact) {
@@ -32,6 +52,7 @@ public class FactsViewModelMapper implements DomainToViewModel<FactAboutNumber, 
     }
 
     private boolean isFactTooLarge(FactAboutNumber fact) {
-        return false;
+        String formatted = formatFact(fact.number, fact.fact);
+        return formatted.length() > MAX_CHARS_FOR_SMALL_FACT;
     }
 }

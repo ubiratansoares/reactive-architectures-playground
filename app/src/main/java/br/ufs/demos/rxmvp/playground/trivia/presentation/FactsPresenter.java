@@ -25,7 +25,7 @@ public class FactsPresenter {
                           DisplayFactsView view,
                           BehavioursCoordinator<FactAboutNumber> coordinator,
                           LifecycleStrategist strategist,
-                          FactsViewModelMapper mapper) {
+                          DomainToViewModel<FactAboutNumber, FactViewModel> mapper) {
 
         this.usecase = usecase;
         this.view = view;
