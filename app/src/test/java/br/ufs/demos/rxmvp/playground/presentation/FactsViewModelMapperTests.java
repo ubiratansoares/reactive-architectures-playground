@@ -52,12 +52,11 @@ public class FactsViewModelMapperTests {
         assertThat(model).isInstanceOf(ComposedWithSpannedStyles.class);
     }
 
-    @Test public void shouldString_NumberFrom_FactText() {
+    @Test public void shouldSplit_NumberFrom_FactText() {
         String text = "7 is a number"; // 49 chars
         FactAboutNumber fact = FactAboutNumber.of("7", text);
         FactViewModel model = mapper.translate(fact);
         assertThat(model.formattedFact()).doesNotContain("7");
-
     }
 }
 
