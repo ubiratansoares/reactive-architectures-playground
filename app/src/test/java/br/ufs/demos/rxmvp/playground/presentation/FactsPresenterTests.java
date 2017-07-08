@@ -12,6 +12,7 @@ import br.ufs.demos.rxmvp.playground.shared.lifecyclestrategy.LifecycleStrategis
 import br.ufs.demos.rxmvp.playground.shared.loadingcontent.LoadingCoordination;
 import br.ufs.demos.rxmvp.playground.shared.networking.NetworkingError;
 import br.ufs.demos.rxmvp.playground.shared.networking.NetworkingErrorFeedback;
+import br.ufs.demos.rxmvp.playground.shared.tooglerefresh.RefreshToogle;
 import br.ufs.demos.rxmvp.playground.trivia.domain.FactAboutNumber;
 import br.ufs.demos.rxmvp.playground.trivia.domain.GetRandomFacts;
 import br.ufs.demos.rxmvp.playground.trivia.domain.errors.ContentNotFoundError;
@@ -57,7 +58,8 @@ public class FactsPresenterTests {
                 new AssignEmptyState<>(view, uiScheduler),
                 new AssignErrorState<>(view, uiScheduler),
                 new LoadingCoordination<>(view, uiScheduler),
-                new NetworkingErrorFeedback<>(view, uiScheduler)
+                new NetworkingErrorFeedback<>(view, uiScheduler),
+                new RefreshToogle<>(view, uiScheduler)
         );
 
         presenter = new FactsPresenter(

@@ -10,6 +10,8 @@ import br.ufs.demos.rxmvp.playground.shared.loadingcontent.LoadingCoordination;
 import br.ufs.demos.rxmvp.playground.shared.loadingcontent.LoadingView;
 import br.ufs.demos.rxmvp.playground.shared.networking.NetworkingErrorView;
 import br.ufs.demos.rxmvp.playground.shared.networking.NetworkingErrorFeedback;
+import br.ufs.demos.rxmvp.playground.shared.tooglerefresh.RefreshToogle;
+import br.ufs.demos.rxmvp.playground.shared.tooglerefresh.ToogleRefreshView;
 import dagger.Module;
 import dagger.Provides;
 import io.reactivex.Scheduler;
@@ -25,13 +27,21 @@ public class BehavioursModule {
             AssignEmptyState assignEmptyState,
             AssignErrorState assignErrorState,
             LoadingCoordination loadingCoordination,
-            NetworkingErrorFeedback networkingErrorFeedback) {
+            NetworkingErrorFeedback networkingErrorFeedback,
+            RefreshToogle refreshToogle) {
 
         return new BehavioursCoordinator(
                 assignEmptyState,
                 assignErrorState,
                 loadingCoordination,
-                networkingErrorFeedback);
+                networkingErrorFeedback,
+                refreshToogle);
+    }
+
+
+    @Provides static RefreshToogle refreshToogle(ToogleRefreshView view,
+                                                 @UIScheduler Scheduler scheduler) {
+        return new RefreshToogle(view, scheduler);
     }
 
     @Provides static LoadingCoordination loadingCoordinator(LoadingView view,

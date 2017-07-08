@@ -71,7 +71,7 @@ public class FactsAboutNumbersActivityTest {
         assertThat(labelMessage.getVisibility()).isEqualTo(View.GONE);
     }
 
-    @Test public void shoulIntegrateActions_ForErrorEmptyState() throws Exception {
+    @Test public void shoulIntegrateActions_ForEmptyState() throws Exception {
         View labelMessage = findById(activity, R.id.label_feedback_message);
 
         activity.showEmptyState().run();

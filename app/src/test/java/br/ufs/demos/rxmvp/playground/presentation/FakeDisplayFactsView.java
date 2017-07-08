@@ -23,6 +23,8 @@ public class FakeDisplayFactsView implements DisplayFactsView {
     @Mock private Action showLoadingAction;
     @Mock private Action hideLoadingAction;
     @Mock private Action reportNetworkingErrorAction;
+    @Mock private Action enableRefresh;
+    @Mock private Action disableRefresh;
 
     private Consumer<FactViewModel> modelConsumer;
     private Consumer<Throwable> errorConsumer;
@@ -65,10 +67,16 @@ public class FakeDisplayFactsView implements DisplayFactsView {
     @Override public Action reportNetworkingError() {
         return reportNetworkingErrorAction;
     }
-    
+
     @Override public Disposable subscribeInto(Flowable<FactViewModel> flow) {
         return flow.subscribe(modelConsumer, errorConsumer, done);
     }
 
+    @Override public Action disableRefresh() {
+        return disableRefresh;
+    }
 
+    @Override public Action enableRefresh() {
+        return enableRefresh;
+    }
 }
