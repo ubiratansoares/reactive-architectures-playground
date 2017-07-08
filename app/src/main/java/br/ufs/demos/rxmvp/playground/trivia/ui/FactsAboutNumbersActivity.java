@@ -97,6 +97,14 @@ public class FactsAboutNumbersActivity
                         .show();
     }
 
+    @Override public Action disableRefresh() {
+        return () -> fab.setVisibility(View.GONE);
+    }
+
+    @Override public Action enableRefresh() {
+        return () -> fab.setVisibility(View.VISIBLE);
+    }
+
     @Override public Disposable subscribeInto(Flowable<FactViewModel> flow) {
         adapter.clear();
         return flow
@@ -119,11 +127,4 @@ public class FactsAboutNumbersActivity
         if (presenter != null) presenter.fetchRandomFacts();
     }
 
-    @Override public Action disableRefresh() {
-        return () -> fab.setVisibility(View.GONE);
-    }
-
-    @Override public Action enableRefresh() {
-        return () -> fab.setVisibility(View.VISIBLE);
-    }
 }

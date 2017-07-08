@@ -93,6 +93,17 @@ public class FactsAboutNumbersActivityTest {
         assertThat(snackText.getVisibility()).isEqualTo(View.VISIBLE);
     }
 
+    @Test public void shoulIntegrateActions_ForRefreshToogle() throws Exception {
+
+        View fab = findById(activity, R.id.fab);
+
+        activity.disableRefresh().run();
+        assertThat(fab.getVisibility()).isEqualTo(View.GONE);
+
+        activity.enableRefresh().run();
+        assertThat(fab.getVisibility()).isEqualTo(View.VISIBLE);
+    }
+
     @Test public void shoulIntegrate_DataDispatching_AvailableData() throws Exception {
 
         View labelMessage = findById(activity, R.id.label_feedback_message);
