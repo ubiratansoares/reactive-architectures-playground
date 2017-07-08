@@ -17,7 +17,8 @@ import javax.inject.Inject;
 
 import br.ufs.demos.rxmvp.playground.R;
 import br.ufs.demos.rxmvp.playground.trivia.presentation.DisplayFactsView;
-import br.ufs.demos.rxmvp.playground.trivia.presentation.FactViewModel;
+import br.ufs.demos.rxmvp.playground.trivia.presentation.models.FactViewModel;
+import br.ufs.demos.rxmvp.playground.trivia.presentation.models.NumberAndFact;
 import br.ufs.demos.rxmvp.playground.trivia.presentation.FactsPresenter;
 import butterknife.BindView;
 import butterknife.ButterKnife;

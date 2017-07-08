@@ -15,7 +15,7 @@ import java.util.List;
 import br.ufs.demos.rxmvp.playground.BuildConfig;
 import br.ufs.demos.rxmvp.playground.R;
 import br.ufs.demos.rxmvp.playground.app.MainApplication;
-import br.ufs.demos.rxmvp.playground.trivia.presentation.FactViewModel;
+import br.ufs.demos.rxmvp.playground.trivia.presentation.models.NumberAndFact;
 import br.ufs.demos.rxmvp.playground.trivia.ui.FactsAboutNumbersActivity;
 import br.ufs.demos.rxmvp.playground.trivia.ui.FactsAdapter;
 import io.reactivex.Flowable;
@@ -96,12 +96,12 @@ public class FactsAboutNumbersActivityTest {
 
         View labelMessage = findById(activity, R.id.label_feedback_message);
 
-        List<FactViewModel> facts = Arrays.asList(
-                new FactViewModel("1", "1 is the first"),
-                new FactViewModel("2", "2 is the second")
+        List<NumberAndFact> facts = Arrays.asList(
+                new NumberAndFact("1", "1 is the first"),
+                new NumberAndFact("2", "2 is the second")
         );
 
-        Flowable<FactViewModel> dataFlow = Flowable.fromIterable(facts);
+        Flowable<NumberAndFact> dataFlow = Flowable.fromIterable(facts);
         FactsAdapter adapter = activity.adapter;
 
         activity.subscribeInto(dataFlow);
@@ -115,7 +115,7 @@ public class FactsAboutNumbersActivityTest {
 
         View labelMessage = findById(activity, R.id.label_feedback_message);
 
-        Flowable<FactViewModel> dataFlow = Flowable.empty();
+        Flowable<NumberAndFact> dataFlow = Flowable.empty();
         FactsAdapter adapter = activity.adapter;
 
         activity.subscribeInto(dataFlow);

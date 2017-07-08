@@ -11,7 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.ufs.demos.rxmvp.playground.R;
-import br.ufs.demos.rxmvp.playground.trivia.presentation.FactViewModel;
+import br.ufs.demos.rxmvp.playground.trivia.presentation.models.FactViewModel;
+import br.ufs.demos.rxmvp.playground.trivia.presentation.models.NumberAndFact;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -23,9 +24,9 @@ public class FactsAdapter extends RecyclerView.Adapter<FactsAdapter.FactHolder> 
 
     private List<FactViewModel> models = new ArrayList<>();
 
-    public void addModel(FactViewModel model) {
+    public void addModel(FactViewModel modelToBeAdded) {
         int actualPosition = models.size();
-        models.add(model);
+        models.add(modelToBeAdded);
         notifyItemInserted(actualPosition);
     }
 
@@ -42,9 +43,9 @@ public class FactsAdapter extends RecyclerView.Adapter<FactsAdapter.FactHolder> 
     }
 
     @Override public void onBindViewHolder(FactHolder holder, int position) {
-        FactViewModel factViewModel = models.get(position);
-        holder.labelNumber.setText(factViewModel.number);
-        holder.labelFact.setText(factViewModel.fact);
+        NumberAndFact numberAndFact = (NumberAndFact) models.get(position);
+        holder.labelNumber.setText(numberAndFact.relatedNumber());
+        holder.labelFact.setText(numberAndFact.formattedFact());
     }
 
     @Override public int getItemCount() {

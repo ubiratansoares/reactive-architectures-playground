@@ -4,6 +4,8 @@ import br.ufs.demos.rxmvp.playground.shared.BehavioursCoordinator;
 import br.ufs.demos.rxmvp.playground.shared.lifecyclestrategy.LifecycleStrategist;
 import br.ufs.demos.rxmvp.playground.trivia.domain.FactAboutNumber;
 import br.ufs.demos.rxmvp.playground.trivia.domain.GetRandomFacts;
+import br.ufs.demos.rxmvp.playground.trivia.presentation.models.FactViewModel;
+import br.ufs.demos.rxmvp.playground.util.DomainToViewModel;
 import io.reactivex.Flowable;
 import io.reactivex.disposables.Disposable;
 
@@ -17,13 +19,13 @@ public class FactsPresenter {
     private DisplayFactsView view;
     private BehavioursCoordinator<FactAboutNumber> coordinator;
     private LifecycleStrategist strategist;
-    private ViewModelMapper mapper;
+    private DomainToViewModel<FactAboutNumber, FactViewModel> mapper;
 
     public FactsPresenter(GetRandomFacts usecase,
                           DisplayFactsView view,
                           BehavioursCoordinator<FactAboutNumber> coordinator,
                           LifecycleStrategist strategist,
-                          ViewModelMapper mapper) {
+                          FactsViewModelMapper mapper) {
 
         this.usecase = usecase;
         this.view = view;
@@ -36,7 +38,7 @@ public class FactsPresenter {
         Flowable<FactViewModel> dataFlow =
                 usecase.fetchTrivia()
                         .compose(coordinator)
-                        .map(fact -> mapper.translateFrom(fact));
+                        .map(fact -> mapper.translate(fact));
 
         Disposable toDispose = view.subscribeInto(dataFlow);
         strategist.applyStrategy(toDispose);

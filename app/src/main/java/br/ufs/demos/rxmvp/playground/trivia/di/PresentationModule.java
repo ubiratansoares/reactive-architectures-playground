@@ -5,7 +5,7 @@ import br.ufs.demos.rxmvp.playground.shared.lifecyclestrategy.LifecycleStrategis
 import br.ufs.demos.rxmvp.playground.trivia.domain.GetRandomFacts;
 import br.ufs.demos.rxmvp.playground.trivia.presentation.DisplayFactsView;
 import br.ufs.demos.rxmvp.playground.trivia.presentation.FactsPresenter;
-import br.ufs.demos.rxmvp.playground.trivia.presentation.ViewModelMapper;
+import br.ufs.demos.rxmvp.playground.trivia.presentation.FactsViewModelMapper;
 import dagger.Module;
 import dagger.Provides;
 
@@ -20,12 +20,12 @@ public class PresentationModule {
                                               DisplayFactsView view,
                                               BehavioursCoordinator coordinator,
                                               LifecycleStrategist strategist,
-                                              ViewModelMapper mapper) {
+                                              FactsViewModelMapper mapper) {
 
         return new FactsPresenter(usecase, view, coordinator, strategist, mapper);
     }
 
-    @Provides static ViewModelMapper viewModelMapper() {
-        return new ViewModelMapper();
+    @Provides static FactsViewModelMapper viewModelMapper() {
+        return new FactsViewModelMapper();
     }
 }
