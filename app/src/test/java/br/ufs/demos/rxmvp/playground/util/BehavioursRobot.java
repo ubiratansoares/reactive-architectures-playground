@@ -6,6 +6,7 @@ import br.ufs.demos.rxmvp.playground.core.emptystate.EmptyStateView;
 import br.ufs.demos.rxmvp.playground.core.errorstate.ErrorStateView;
 import br.ufs.demos.rxmvp.playground.core.loadingcontent.LoadingView;
 import br.ufs.demos.rxmvp.playground.core.networking.NetworkingErrorView;
+import br.ufs.demos.rxmvp.playground.core.tooglerefresh.ToogleRefreshView;
 
 import static br.ufs.demos.rxmvp.playground.util.MockitoHelpers.oneTimeOnly;
 import static org.mockito.Mockito.inOrder;
@@ -73,16 +74,42 @@ public class BehavioursRobot {
     public BehavioursRobot showLoadingFirstHideLoadingAfter() throws Exception {
         checkLoadingView();
         LoadingView view = (LoadingView) target;
-        verifyInOrderShowAndHide(view);
+        verifyInOrderShowAndHideLoading(view);
         return this;
     }
 
-    private void verifyInOrderShowAndHide(LoadingView view) throws Exception {
+    public BehavioursRobot disableRefreshFirstAndEnableAfter() throws Exception {
+        checkToogleRefreshView();
+        ToogleRefreshView view = (ToogleRefreshView) target;
+        verifyDisableEnableRefresh(view);
+        return this;
+    }
+
+    public BehavioursRobot disableRefreshFirstAndNotEnableAfter() throws Exception {
+        checkToogleRefreshView();
+        ToogleRefreshView view = (ToogleRefreshView) target;
+        verifyDisableAndNotEnableRefresh(view);
+        return this;
+    }
+
+    private void verifyInOrderShowAndHideLoading(LoadingView view) throws Exception {
         InOrder inOrder = inOrder(view.showLoading(), view.hideLoading());
         inOrder.verify(view.showLoading(), oneTimeOnly()).run();
         inOrder.verify(view.hideLoading(), oneTimeOnly()).run();
     }
 
+    private void verifyDisableEnableRefresh(ToogleRefreshView view) throws Exception {
+        InOrder inOrder = inOrder(view.enableRefresh(), view.disableRefresh());
+        inOrder.verify(view.disableRefresh(), oneTimeOnly()).run();
+        inOrder.verify(view.enableRefresh(), oneTimeOnly()).run();
+    }
+
+    private void verifyDisableAndNotEnableRefresh(ToogleRefreshView view) throws Exception {
+        InOrder inOrder = inOrder(view.enableRefresh(), view.disableRefresh());
+        inOrder.verify(view.disableRefresh(), oneTimeOnly()).run();
+        inOrder.verify(view.enableRefresh(), never()).run();
+    }
+    
     private void checkEmptyStateView() {
         if (!(target instanceof EmptyStateView))
             throw new IllegalStateException("Target view not instance of EmptyStateView");
@@ -102,4 +129,11 @@ public class BehavioursRobot {
         if (!(target instanceof NetworkingErrorView))
             throw new IllegalStateException("Target view not instance of NetworkingErroView");
     }
+
+    private void checkToogleRefreshView() {
+        if (!(target instanceof ToogleRefreshView))
+            throw new IllegalStateException("Target view not instance of ToogleRefreshView");
+    }
+
+
 }

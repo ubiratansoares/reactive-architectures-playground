@@ -8,6 +8,7 @@ import org.mockito.MockitoAnnotations;
 
 import br.ufs.demos.rxmvp.playground.core.tooglerefresh.RefreshToogle;
 import br.ufs.demos.rxmvp.playground.core.tooglerefresh.ToogleRefreshView;
+import br.ufs.demos.rxmvp.playground.trivia.domain.errors.ContentNotFoundError;
 import io.reactivex.Flowable;
 import io.reactivex.Scheduler;
 import io.reactivex.functions.Action;
@@ -51,17 +52,17 @@ public class ToogleRefreshTests {
                 .compose(toogler)
                 .subscribe();
 
-        verifyDisableFirstEnableAfter();
+        checkForDisableFirstEnableAfter();
     }
 
     @Test public void shouldDisableFirstEnableAfter_WhenEmptyFlow() throws Exception {
         Flowable<Integer> empty = Flowable.empty();
         empty.compose(toogler).subscribe();
 
-        verifyDisableFirstEnableAfter();
+        checkForDisableFirstEnableAfter();
     }
 
-    @Test public void shouldNotAssignEmpty_WithNotTargetError() throws Exception {
+    @Test public void shouldNotEnableAfter_WithNotSpecialError() throws Exception {
         Flowable<Integer> broken = Flowable.error(new RuntimeException("WTF!!"));
 
         broken.compose(toogler)
@@ -71,16 +72,29 @@ public class ToogleRefreshTests {
                         () -> {}
                 );
 
-        verifyDisableFirstNotEnableAfter();
+        checkForDisableFirstNotEnableAfter();
     }
 
-    private void verifyDisableFirstEnableAfter() throws Exception {
+    @Test public void shouldEnableAfter_WithSpecialError() throws Exception {
+        Flowable<Integer> broken = Flowable.error(new ContentNotFoundError());
+
+        broken.compose(toogler)
+                .subscribe(
+                        some -> {},
+                        Throwable::printStackTrace,
+                        () -> {}
+                );
+
+        checkForDisableFirstEnableAfter();
+    }
+
+    private void checkForDisableFirstEnableAfter() throws Exception {
         InOrder inOrder = inOrder(disableRefresh, enableRefresh);
         inOrder.verify(disableRefresh, oneTimeOnly()).run();
         inOrder.verify(enableRefresh, oneTimeOnly()).run();
     }
 
-    private void verifyDisableFirstNotEnableAfter() throws Exception {
+    private void checkForDisableFirstNotEnableAfter() throws Exception {
         InOrder inOrder = inOrder(disableRefresh, enableRefresh);
         inOrder.verify(disableRefresh, oneTimeOnly()).run();
         inOrder.verify(enableRefresh, never()).run();
