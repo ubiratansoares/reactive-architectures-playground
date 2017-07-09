@@ -1,4 +1,4 @@
-package br.ufs.demos.rxmvp.playground.behaviours;
+package br.ufs.demos.rxmvp.playground.core;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -7,7 +7,6 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import br.ufs.demos.rxmvp.playground.core.HideAtStartShowAtError;
 import br.ufs.demos.rxmvp.playground.util.ErrorPredicate;
 import io.reactivex.Flowable;
 import io.reactivex.Scheduler;

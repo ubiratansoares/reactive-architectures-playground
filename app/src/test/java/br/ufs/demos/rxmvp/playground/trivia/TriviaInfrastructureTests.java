@@ -1,4 +1,4 @@
-package br.ufs.demos.rxmvp.playground.infrastructure;
+package br.ufs.demos.rxmvp.playground.trivia;
 
 import org.junit.After;
 import org.junit.Before;

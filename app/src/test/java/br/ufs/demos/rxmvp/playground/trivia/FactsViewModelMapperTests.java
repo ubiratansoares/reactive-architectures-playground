@@ -1,4 +1,4 @@
-package br.ufs.demos.rxmvp.playground.presentation;
+package br.ufs.demos.rxmvp.playground.trivia;
 
 import android.content.Context;
 

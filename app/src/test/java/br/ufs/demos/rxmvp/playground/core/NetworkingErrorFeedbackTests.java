@@ -1,4 +1,4 @@
-package br.ufs.demos.rxmvp.playground.networking;
+package br.ufs.demos.rxmvp.playground.core;
 
 import org.junit.Before;
 import org.junit.Test;

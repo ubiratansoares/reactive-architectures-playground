@@ -1,4 +1,4 @@
-package br.ufs.demos.rxmvp.playground.ui;
+package br.ufs.demos.rxmvp.playground.trivia;
 
 import android.view.View;
 import android.widget.ProgressBar;

@@ -1,4 +1,4 @@
-package br.ufs.demos.rxmvp.playground.networking;
+package br.ufs.demos.rxmvp.playground.core;
 
 import com.google.gson.JsonSyntaxException;
 
