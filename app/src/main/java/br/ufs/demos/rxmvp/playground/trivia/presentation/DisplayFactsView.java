@@ -1,10 +1,10 @@
 package br.ufs.demos.rxmvp.playground.trivia.presentation;
 
-import br.ufs.demos.rxmvp.playground.shared.emptystate.EmptyStateView;
-import br.ufs.demos.rxmvp.playground.shared.errorstate.ErrorStateView;
-import br.ufs.demos.rxmvp.playground.shared.loadingcontent.LoadingView;
-import br.ufs.demos.rxmvp.playground.shared.networking.NetworkingErrorView;
-import br.ufs.demos.rxmvp.playground.shared.tooglerefresh.ToogleRefreshView;
+import br.ufs.demos.rxmvp.playground.core.emptystate.EmptyStateView;
+import br.ufs.demos.rxmvp.playground.core.errorstate.ErrorStateView;
+import br.ufs.demos.rxmvp.playground.core.loadingcontent.LoadingView;
+import br.ufs.demos.rxmvp.playground.core.networking.NetworkingErrorView;
+import br.ufs.demos.rxmvp.playground.core.tooglerefresh.ToogleRefreshView;
 import br.ufs.demos.rxmvp.playground.trivia.presentation.models.FactViewModel;
 import io.reactivex.Flowable;
 import io.reactivex.disposables.Disposable;

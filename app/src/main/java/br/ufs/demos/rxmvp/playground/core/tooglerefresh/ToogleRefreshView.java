@@ -1,4 +1,4 @@
-package br.ufs.demos.rxmvp.playground.shared.tooglerefresh;
+package br.ufs.demos.rxmvp.playground.core.tooglerefresh;
 
 import io.reactivex.functions.Action;
 

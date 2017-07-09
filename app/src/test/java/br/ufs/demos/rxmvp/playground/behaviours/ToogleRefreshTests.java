@@ -6,8 +6,8 @@ import org.mockito.InOrder;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import br.ufs.demos.rxmvp.playground.shared.tooglerefresh.RefreshToogle;
-import br.ufs.demos.rxmvp.playground.shared.tooglerefresh.ToogleRefreshView;
+import br.ufs.demos.rxmvp.playground.core.tooglerefresh.RefreshToogle;
+import br.ufs.demos.rxmvp.playground.core.tooglerefresh.ToogleRefreshView;
 import io.reactivex.Flowable;
 import io.reactivex.Scheduler;
 import io.reactivex.functions.Action;

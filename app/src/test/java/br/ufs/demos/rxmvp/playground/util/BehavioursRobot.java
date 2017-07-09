@@ -2,10 +2,10 @@ package br.ufs.demos.rxmvp.playground.util;
 
 import org.mockito.InOrder;
 
-import br.ufs.demos.rxmvp.playground.shared.emptystate.EmptyStateView;
-import br.ufs.demos.rxmvp.playground.shared.errorstate.ErrorStateView;
-import br.ufs.demos.rxmvp.playground.shared.loadingcontent.LoadingView;
-import br.ufs.demos.rxmvp.playground.shared.networking.NetworkingErrorView;
+import br.ufs.demos.rxmvp.playground.core.emptystate.EmptyStateView;
+import br.ufs.demos.rxmvp.playground.core.errorstate.ErrorStateView;
+import br.ufs.demos.rxmvp.playground.core.loadingcontent.LoadingView;
+import br.ufs.demos.rxmvp.playground.core.networking.NetworkingErrorView;
 
 import static br.ufs.demos.rxmvp.playground.util.MockitoHelpers.oneTimeOnly;
 import static org.mockito.Mockito.inOrder;

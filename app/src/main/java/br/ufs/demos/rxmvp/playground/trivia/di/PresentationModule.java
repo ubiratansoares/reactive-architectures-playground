@@ -2,8 +2,8 @@ package br.ufs.demos.rxmvp.playground.trivia.di;
 
 import android.content.Context;
 
-import br.ufs.demos.rxmvp.playground.shared.BehavioursCoordinator;
-import br.ufs.demos.rxmvp.playground.shared.lifecyclestrategy.LifecycleStrategist;
+import br.ufs.demos.rxmvp.playground.core.BehavioursCoordinator;
+import br.ufs.demos.rxmvp.playground.core.lifecyclestrategy.LifecycleStrategist;
 import br.ufs.demos.rxmvp.playground.trivia.domain.GetRandomFacts;
 import br.ufs.demos.rxmvp.playground.trivia.presentation.DisplayFactsView;
 import br.ufs.demos.rxmvp.playground.trivia.presentation.FactsPresenter;

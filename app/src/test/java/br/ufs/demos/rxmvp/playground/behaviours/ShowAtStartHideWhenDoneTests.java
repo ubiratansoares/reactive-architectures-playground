@@ -7,7 +7,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import br.ufs.demos.rxmvp.playground.shared.ShowAtStartHideWhenDone;
+import br.ufs.demos.rxmvp.playground.core.ShowAtStartHideWhenDone;
 import io.reactivex.Flowable;
 import io.reactivex.Scheduler;
 import io.reactivex.functions.Action;

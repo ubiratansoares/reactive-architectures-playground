@@ -7,7 +7,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import br.ufs.demos.rxmvp.playground.shared.HideAtStartShowAtError;
+import br.ufs.demos.rxmvp.playground.core.HideAtStartShowAtError;
 import br.ufs.demos.rxmvp.playground.util.ErrorPredicate;
 import io.reactivex.Flowable;
 import io.reactivex.Scheduler;

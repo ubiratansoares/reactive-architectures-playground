@@ -1,12 +1,12 @@
-package br.ufs.demos.rxmvp.playground.shared;
+package br.ufs.demos.rxmvp.playground.core;
 
 import org.reactivestreams.Publisher;
 
-import br.ufs.demos.rxmvp.playground.shared.emptystate.AssignEmptyState;
-import br.ufs.demos.rxmvp.playground.shared.errorstate.AssignErrorState;
-import br.ufs.demos.rxmvp.playground.shared.loadingcontent.LoadingCoordination;
-import br.ufs.demos.rxmvp.playground.shared.networking.NetworkingErrorFeedback;
-import br.ufs.demos.rxmvp.playground.shared.tooglerefresh.RefreshToogle;
+import br.ufs.demos.rxmvp.playground.core.emptystate.AssignEmptyState;
+import br.ufs.demos.rxmvp.playground.core.errorstate.AssignErrorState;
+import br.ufs.demos.rxmvp.playground.core.loadingcontent.LoadingCoordination;
+import br.ufs.demos.rxmvp.playground.core.networking.NetworkingErrorFeedback;
+import br.ufs.demos.rxmvp.playground.core.tooglerefresh.RefreshToogle;
 import io.reactivex.Flowable;
 import io.reactivex.FlowableTransformer;
 

@@ -1,4 +1,4 @@
-package br.ufs.demos.rxmvp.playground.shared.loadingcontent;
+package br.ufs.demos.rxmvp.playground.core.loadingcontent;
 
 import io.reactivex.functions.Action;
 

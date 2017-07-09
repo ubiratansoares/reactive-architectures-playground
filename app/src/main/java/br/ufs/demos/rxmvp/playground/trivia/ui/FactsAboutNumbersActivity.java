@@ -53,7 +53,7 @@ public class FactsAboutNumbersActivity
 
     @Override protected void onResume() {
         super.onResume();
-        fetchFacts();
+        newTrivia();
     }
 
     @Override public LifecycleRegistry getLifecycle() {
@@ -93,7 +93,7 @@ public class FactsAboutNumbersActivity
     @Override public Action reportNetworkingError() {
         return () ->
                 Snackbar.make(container, "Erro de conexão. Por favor, tente novamente", Snackbar.LENGTH_INDEFINITE)
-                        .setAction("TENTAR NOVAMENTE", view -> fetchFacts())
+                        .setAction("TENTAR NOVAMENTE", view -> newTrivia())
                         .show();
     }
 
@@ -117,13 +117,13 @@ public class FactsAboutNumbersActivity
     }
 
     private void setupViews() {
-        fab.setOnClickListener(view -> fetchFacts());
+        fab.setOnClickListener(view -> newTrivia());
         adapter = new FactsAdapter(LayoutInflater.from(this));
         factsView.setLayoutManager(new LinearLayoutManager(this));
         factsView.setAdapter(adapter);
     }
 
-    private void fetchFacts() {
+    private void newTrivia() {
         if (presenter != null) presenter.fetchRandomFacts();
     }
 

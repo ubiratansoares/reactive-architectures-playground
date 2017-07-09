@@ -5,8 +5,8 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import br.ufs.demos.rxmvp.playground.shared.emptystate.AssignEmptyState;
-import br.ufs.demos.rxmvp.playground.shared.emptystate.EmptyStateView;
+import br.ufs.demos.rxmvp.playground.core.emptystate.AssignEmptyState;
+import br.ufs.demos.rxmvp.playground.core.emptystate.EmptyStateView;
 import br.ufs.demos.rxmvp.playground.trivia.domain.errors.ContentNotFoundError;
 import io.reactivex.Flowable;
 import io.reactivex.Scheduler;
