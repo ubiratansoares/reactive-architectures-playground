@@ -28,8 +28,8 @@ import io.reactivex.functions.Action;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
+import static br.ufs.demos.rxmvp.playground.util.MockitoHelpers.oneTimeOnly;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.atLeastOnce;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -91,7 +91,7 @@ public class FactsPresenterTests {
 
         DataFlowWatcher.with(onNext, onError, onCompleted).shouldReceiveItems(2);
 
-        verify(strategist, atLeastOnce()).applyStrategy(any());
+        verify(strategist, oneTimeOnly()).applyStrategy(any());
     }
 
     @Test public void shouldPresent_NoContentError_IntoView() throws Exception {
@@ -110,7 +110,7 @@ public class FactsPresenterTests {
 
         DataFlowWatcher.with(onNext, onError, onCompleted).shouldFinishWithError();
 
-        verify(strategist, atLeastOnce()).applyStrategy(any());
+        verify(strategist, oneTimeOnly()).applyStrategy(any());
     }
 
     @Test public void shouldPresent_UnexpectedResponseError_IntoView() throws Exception {
@@ -129,7 +129,7 @@ public class FactsPresenterTests {
 
         DataFlowWatcher.with(onNext, onError, onCompleted).shouldFinishWithError();
 
-        verify(strategist, atLeastOnce()).applyStrategy(any());
+        verify(strategist, oneTimeOnly()).applyStrategy(any());
     }
 
     @Test public void shouldPresent_AnotherError_IntoView() throws Exception {
@@ -146,9 +146,8 @@ public class FactsPresenterTests {
                 .shouldNotShowEmptyState()
                 .shouldNotReportNetworkingError();
 
-
         DataFlowWatcher.with(onNext, onError, onCompleted).shouldFinishWithError();
-        verify(strategist, atLeastOnce()).applyStrategy(any());
+        verify(strategist, oneTimeOnly()).applyStrategy(any());
     }
 
     @Test public void shouldReport_NetworkingError_IntoView() throws Exception {
@@ -167,6 +166,6 @@ public class FactsPresenterTests {
 
 
         DataFlowWatcher.with(onNext, onError, onCompleted).shouldFinishWithError();
-        verify(strategist, atLeastOnce()).applyStrategy(any());
+        verify(strategist, oneTimeOnly()).applyStrategy(any());
     }
 }
