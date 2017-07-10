@@ -1,4 +1,4 @@
-package br.ufs.demos.rxmvp.playground.core.lifecyclestrategy;
+package br.ufs.demos.rxmvp.playground.core.lifecycles;
 
 import android.arch.lifecycle.LifecycleOwner;
 

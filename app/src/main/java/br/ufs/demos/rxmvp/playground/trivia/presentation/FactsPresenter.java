@@ -1,7 +1,7 @@
 package br.ufs.demos.rxmvp.playground.trivia.presentation;
 
-import br.ufs.demos.rxmvp.playground.core.BehavioursCoordinator;
-import br.ufs.demos.rxmvp.playground.core.lifecyclestrategy.LifecycleStrategist;
+import br.ufs.demos.rxmvp.playground.core.behaviours.BehavioursCoordinator;
+import br.ufs.demos.rxmvp.playground.core.lifecycles.LifecycleStrategist;
 import br.ufs.demos.rxmvp.playground.trivia.domain.FactAboutNumber;
 import br.ufs.demos.rxmvp.playground.trivia.domain.GetRandomFacts;
 import br.ufs.demos.rxmvp.playground.trivia.presentation.models.FactViewModel;

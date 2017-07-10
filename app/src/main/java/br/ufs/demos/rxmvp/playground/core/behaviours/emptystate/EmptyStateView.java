@@ -1,4 +1,4 @@
-package br.ufs.demos.rxmvp.playground.core.emptystate;
+package br.ufs.demos.rxmvp.playground.core.behaviours.emptystate;
 
 import io.reactivex.functions.Action;
 

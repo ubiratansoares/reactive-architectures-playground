@@ -1,4 +1,4 @@
-package br.ufs.demos.rxmvp.playground.core.resterrors;
+package br.ufs.demos.rxmvp.playground.core.infraerrors;
 
 import com.google.gson.JsonIOException;
 import com.google.gson.JsonParseException;

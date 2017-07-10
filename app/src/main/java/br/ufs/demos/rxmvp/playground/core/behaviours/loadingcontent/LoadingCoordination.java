@@ -1,8 +1,8 @@
-package br.ufs.demos.rxmvp.playground.core.loadingcontent;
+package br.ufs.demos.rxmvp.playground.core.behaviours.loadingcontent;
 
 import org.reactivestreams.Publisher;
 
-import br.ufs.demos.rxmvp.playground.core.ShowAtStartHideWhenDone;
+import br.ufs.demos.rxmvp.playground.core.behaviours.ShowAtStartHideWhenDone;
 import io.reactivex.Flowable;
 import io.reactivex.FlowableTransformer;
 import io.reactivex.Scheduler;

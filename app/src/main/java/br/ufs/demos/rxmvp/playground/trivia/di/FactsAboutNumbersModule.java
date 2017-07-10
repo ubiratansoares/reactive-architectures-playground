@@ -4,11 +4,11 @@ import android.arch.lifecycle.LifecycleOwner;
 
 import br.ufs.demos.rxmvp.playground.core.di.BehavioursModule;
 import br.ufs.demos.rxmvp.playground.core.di.LifecycleStrategistModule;
-import br.ufs.demos.rxmvp.playground.core.emptystate.EmptyStateView;
-import br.ufs.demos.rxmvp.playground.core.errorstate.ErrorStateView;
-import br.ufs.demos.rxmvp.playground.core.loadingcontent.LoadingView;
-import br.ufs.demos.rxmvp.playground.core.networking.NetworkingErrorView;
-import br.ufs.demos.rxmvp.playground.core.tooglerefresh.ToogleRefreshView;
+import br.ufs.demos.rxmvp.playground.core.behaviours.emptystate.EmptyStateView;
+import br.ufs.demos.rxmvp.playground.core.behaviours.errorstate.ErrorStateView;
+import br.ufs.demos.rxmvp.playground.core.behaviours.loadingcontent.LoadingView;
+import br.ufs.demos.rxmvp.playground.core.behaviours.networking.NetworkingErrorView;
+import br.ufs.demos.rxmvp.playground.core.behaviours.tooglerefresh.ToogleRefreshView;
 import br.ufs.demos.rxmvp.playground.trivia.presentation.DisplayFactsView;
 import br.ufs.demos.rxmvp.playground.trivia.ui.FactsAboutNumbersActivity;
 import dagger.Module;

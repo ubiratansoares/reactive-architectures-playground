@@ -1,4 +1,4 @@
-package br.ufs.demos.rxmvp.playground.core.resterrors;
+package br.ufs.demos.rxmvp.playground.core.infraerrors;
 
 import org.reactivestreams.Publisher;
 
@@ -15,10 +15,10 @@ import retrofit2.HttpException;
 public class RestErrorsHandler<T> implements FlowableTransformer<T, T> {
 
     @Override public Publisher<T> apply(Flowable<T> upstream) {
-        return upstream.onErrorResumeNext(this::handleNotFound);
+        return upstream.onErrorResumeNext(this::handleIfRestError);
     }
 
-    private Publisher<T> handleNotFound(Throwable throwable) {
+    private Publisher<T> handleIfRestError(Throwable throwable) {
 
         if (notFound(throwable)) {
             return Flowable.error(new ContentNotFoundError());

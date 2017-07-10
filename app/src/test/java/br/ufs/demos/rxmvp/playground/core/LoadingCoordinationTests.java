@@ -7,8 +7,8 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
-import br.ufs.demos.rxmvp.playground.core.loadingcontent.LoadingCoordination;
-import br.ufs.demos.rxmvp.playground.core.loadingcontent.LoadingView;
+import br.ufs.demos.rxmvp.playground.core.behaviours.loadingcontent.LoadingCoordination;
+import br.ufs.demos.rxmvp.playground.core.behaviours.loadingcontent.LoadingView;
 import io.reactivex.Flowable;
 import io.reactivex.Scheduler;
 import io.reactivex.functions.Action;

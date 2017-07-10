@@ -2,8 +2,8 @@ package br.ufs.demos.rxmvp.playground.core.di;
 
 import android.arch.lifecycle.LifecycleOwner;
 
-import br.ufs.demos.rxmvp.playground.core.lifecyclestrategy.DisposeStrategy;
-import br.ufs.demos.rxmvp.playground.core.lifecyclestrategy.LifecycleStrategist;
+import br.ufs.demos.rxmvp.playground.core.lifecycles.DisposeStrategy;
+import br.ufs.demos.rxmvp.playground.core.lifecycles.LifecycleStrategist;
 import dagger.Module;
 import dagger.Provides;
 

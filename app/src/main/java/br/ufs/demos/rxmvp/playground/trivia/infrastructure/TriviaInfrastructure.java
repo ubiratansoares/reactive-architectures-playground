@@ -2,10 +2,10 @@ package br.ufs.demos.rxmvp.playground.trivia.infrastructure;
 
 import java.util.List;
 
-import br.ufs.demos.rxmvp.playground.core.resterrors.DeserializationIssuesHandler;
-import br.ufs.demos.rxmvp.playground.core.resterrors.RestErrorsHandler;
+import br.ufs.demos.rxmvp.playground.core.infraerrors.DeserializationIssuesHandler;
+import br.ufs.demos.rxmvp.playground.core.infraerrors.RestErrorsHandler;
 import br.ufs.demos.rxmvp.playground.webservice.NumbersWebService;
-import br.ufs.demos.rxmvp.playground.core.networking.NetworkingErrorHandler;
+import br.ufs.demos.rxmvp.playground.core.behaviours.networking.NetworkingErrorHandler;
 import br.ufs.demos.rxmvp.playground.trivia.domain.FactAboutNumber;
 import br.ufs.demos.rxmvp.playground.trivia.domain.GetRandomFacts;
 import br.ufs.demos.rxmvp.playground.trivia.domain.TriviaGenerator;

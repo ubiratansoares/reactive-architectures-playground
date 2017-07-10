@@ -1,4 +1,4 @@
-package br.ufs.demos.rxmvp.playground.core.tooglerefresh;
+package br.ufs.demos.rxmvp.playground.core.behaviours.tooglerefresh;
 
 import org.reactivestreams.Publisher;
 

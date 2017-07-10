@@ -1,4 +1,4 @@
-package br.ufs.demos.rxmvp.playground.core.errorstate;
+package br.ufs.demos.rxmvp.playground.core.behaviours.errorstate;
 
 import io.reactivex.functions.Action;
 

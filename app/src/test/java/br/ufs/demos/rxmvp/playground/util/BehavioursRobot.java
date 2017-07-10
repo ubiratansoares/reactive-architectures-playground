@@ -2,11 +2,11 @@ package br.ufs.demos.rxmvp.playground.util;
 
 import org.mockito.InOrder;
 
-import br.ufs.demos.rxmvp.playground.core.emptystate.EmptyStateView;
-import br.ufs.demos.rxmvp.playground.core.errorstate.ErrorStateView;
-import br.ufs.demos.rxmvp.playground.core.loadingcontent.LoadingView;
-import br.ufs.demos.rxmvp.playground.core.networking.NetworkingErrorView;
-import br.ufs.demos.rxmvp.playground.core.tooglerefresh.ToogleRefreshView;
+import br.ufs.demos.rxmvp.playground.core.behaviours.emptystate.EmptyStateView;
+import br.ufs.demos.rxmvp.playground.core.behaviours.errorstate.ErrorStateView;
+import br.ufs.demos.rxmvp.playground.core.behaviours.loadingcontent.LoadingView;
+import br.ufs.demos.rxmvp.playground.core.behaviours.networking.NetworkingErrorView;
+import br.ufs.demos.rxmvp.playground.core.behaviours.tooglerefresh.ToogleRefreshView;
 
 import static br.ufs.demos.rxmvp.playground.util.MockitoHelpers.oneTimeOnly;
 import static org.mockito.Mockito.inOrder;
@@ -109,7 +109,7 @@ public class BehavioursRobot {
         inOrder.verify(view.disableRefresh(), oneTimeOnly()).run();
         inOrder.verify(view.enableRefresh(), never()).run();
     }
-    
+
     private void checkEmptyStateView() {
         if (!(target instanceof EmptyStateView))
             throw new IllegalStateException("Target view not instance of EmptyStateView");

@@ -1,8 +1,8 @@
-package br.ufs.demos.rxmvp.playground.core.emptystate;
+package br.ufs.demos.rxmvp.playground.core.behaviours.emptystate;
 
 import org.reactivestreams.Publisher;
 
-import br.ufs.demos.rxmvp.playground.core.HideAtStartShowAtError;
+import br.ufs.demos.rxmvp.playground.core.behaviours.HideAtStartShowAtError;
 import br.ufs.demos.rxmvp.playground.trivia.domain.errors.ContentNotFoundError;
 import io.reactivex.Flowable;
 import io.reactivex.FlowableTransformer;

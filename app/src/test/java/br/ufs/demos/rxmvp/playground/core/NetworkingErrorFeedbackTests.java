@@ -5,8 +5,8 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import br.ufs.demos.rxmvp.playground.core.networking.NetworkingError;
-import br.ufs.demos.rxmvp.playground.core.networking.NetworkingErrorFeedback;
+import br.ufs.demos.rxmvp.playground.core.behaviours.networking.NetworkingError;
+import br.ufs.demos.rxmvp.playground.core.behaviours.networking.NetworkingErrorFeedback;
 import br.ufs.demos.rxmvp.playground.trivia.domain.errors.ContentNotFoundError;
 import io.reactivex.Flowable;
 import io.reactivex.Scheduler;

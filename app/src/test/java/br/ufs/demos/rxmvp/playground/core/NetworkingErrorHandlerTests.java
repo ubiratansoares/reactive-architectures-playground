@@ -9,8 +9,8 @@ import java.io.IOException;
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 
-import br.ufs.demos.rxmvp.playground.core.networking.NetworkingError;
-import br.ufs.demos.rxmvp.playground.core.networking.NetworkingErrorHandler;
+import br.ufs.demos.rxmvp.playground.core.behaviours.networking.NetworkingError;
+import br.ufs.demos.rxmvp.playground.core.behaviours.networking.NetworkingErrorHandler;
 import io.reactivex.Flowable;
 
 /**
