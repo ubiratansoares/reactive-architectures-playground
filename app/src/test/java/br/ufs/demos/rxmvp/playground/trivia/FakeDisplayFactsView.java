@@ -68,10 +68,6 @@ public class FakeDisplayFactsView implements DisplayFactsView {
         return reportNetworkingErrorAction;
     }
 
-    @Override public Disposable subscribeInto(Flowable<FactViewModel> flow) {
-        return flow.subscribe(modelConsumer, errorConsumer, done);
-    }
-
     @Override public Action disableRefresh() {
         return disableRefresh;
     }
@@ -79,4 +75,9 @@ public class FakeDisplayFactsView implements DisplayFactsView {
     @Override public Action enableRefresh() {
         return enableRefresh;
     }
+
+    @Override public Disposable subscribeInto(Flowable<FactViewModel> flow) {
+        return flow.subscribe(modelConsumer, errorConsumer, done);
+    }
+
 }

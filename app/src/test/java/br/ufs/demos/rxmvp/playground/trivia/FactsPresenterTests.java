@@ -10,13 +10,13 @@ import br.ufs.demos.rxmvp.playground.core.behaviours.emptystate.AssignEmptyState
 import br.ufs.demos.rxmvp.playground.core.behaviours.errorstate.AssignErrorState;
 import br.ufs.demos.rxmvp.playground.core.lifecycles.LifecycleStrategist;
 import br.ufs.demos.rxmvp.playground.core.behaviours.loadingcontent.LoadingCoordination;
-import br.ufs.demos.rxmvp.playground.core.behaviours.networking.NetworkingError;
+import br.ufs.demos.rxmvp.playground.core.behaviours.errors.NetworkingError;
 import br.ufs.demos.rxmvp.playground.core.behaviours.networking.NetworkingErrorFeedback;
 import br.ufs.demos.rxmvp.playground.core.behaviours.tooglerefresh.RefreshToogle;
 import br.ufs.demos.rxmvp.playground.trivia.domain.FactAboutNumber;
 import br.ufs.demos.rxmvp.playground.trivia.domain.GetRandomFacts;
-import br.ufs.demos.rxmvp.playground.trivia.domain.errors.ContentNotFoundError;
-import br.ufs.demos.rxmvp.playground.trivia.domain.errors.UnexpectedResponseError;
+import br.ufs.demos.rxmvp.playground.core.behaviours.errors.ContentNotFoundError;
+import br.ufs.demos.rxmvp.playground.core.behaviours.errors.UnexpectedResponseError;
 import br.ufs.demos.rxmvp.playground.trivia.presentation.FactsPresenter;
 import br.ufs.demos.rxmvp.playground.trivia.presentation.models.FactViewModel;
 import br.ufs.demos.rxmvp.playground.trivia.presentation.models.NumberAndFact;
@@ -107,7 +107,6 @@ public class FactsPresenterTests {
                 .shouldNotShowErrorState()
                 .shouldNotReportNetworkingError();
 
-
         DataFlowWatcher.with(onNext, onError, onCompleted).shouldFinishWithError();
 
         verify(strategist, oneTimeOnly()).applyStrategy(any());
@@ -125,7 +124,6 @@ public class FactsPresenterTests {
                 .shouldNotShowEmptyState()
                 .shouldShowErrorState()
                 .shouldNotReportNetworkingError();
-
 
         DataFlowWatcher.with(onNext, onError, onCompleted).shouldFinishWithError();
 
@@ -163,7 +161,6 @@ public class FactsPresenterTests {
                 .shouldShowErrorState()
                 .shouldNotShowEmptyState()
                 .shouldReportNetworkingError();
-
 
         DataFlowWatcher.with(onNext, onError, onCompleted).shouldFinishWithError();
         verify(strategist, oneTimeOnly()).applyStrategy(any());

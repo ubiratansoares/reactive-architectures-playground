@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 
+import br.ufs.demos.rxmvp.playground.core.behaviours.errors.NetworkingError;
 import io.reactivex.Flowable;
 import io.reactivex.FlowableTransformer;
 

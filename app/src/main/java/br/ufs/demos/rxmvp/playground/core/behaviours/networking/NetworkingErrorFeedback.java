@@ -2,6 +2,7 @@ package br.ufs.demos.rxmvp.playground.core.behaviours.networking;
 
 import org.reactivestreams.Publisher;
 
+import br.ufs.demos.rxmvp.playground.core.behaviours.errors.NetworkingError;
 import io.reactivex.Completable;
 import io.reactivex.Flowable;
 import io.reactivex.FlowableTransformer;

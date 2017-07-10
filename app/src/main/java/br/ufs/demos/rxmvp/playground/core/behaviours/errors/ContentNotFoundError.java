@@ -1,4 +1,4 @@
-package br.ufs.demos.rxmvp.playground.trivia.domain.errors;
+package br.ufs.demos.rxmvp.playground.core.behaviours.errors;
 
 /**
  * Created by bira on 6/29/17.

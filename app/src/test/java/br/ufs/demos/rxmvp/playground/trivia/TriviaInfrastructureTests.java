@@ -8,8 +8,8 @@ import java.io.IOException;
 
 import br.ufs.demos.rxmvp.playground.webservice.NumbersWebService;
 import br.ufs.demos.rxmvp.playground.trivia.domain.TriviaGenerator;
-import br.ufs.demos.rxmvp.playground.trivia.domain.errors.ContentNotFoundError;
-import br.ufs.demos.rxmvp.playground.trivia.domain.errors.UnexpectedResponseError;
+import br.ufs.demos.rxmvp.playground.core.behaviours.errors.ContentNotFoundError;
+import br.ufs.demos.rxmvp.playground.core.behaviours.errors.UnexpectedResponseError;
 import br.ufs.demos.rxmvp.playground.trivia.infrastructure.PayloadMapper;
 import br.ufs.demos.rxmvp.playground.trivia.infrastructure.PayloadValidator;
 import br.ufs.demos.rxmvp.playground.trivia.infrastructure.TriviaInfrastructure;

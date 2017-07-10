@@ -2,7 +2,7 @@ package br.ufs.demos.rxmvp.playground.core.behaviours.tooglerefresh;
 
 import org.reactivestreams.Publisher;
 
-import br.ufs.demos.rxmvp.playground.trivia.domain.errors.ContentNotFoundError;
+import br.ufs.demos.rxmvp.playground.core.behaviours.errors.ContentNotFoundError;
 import io.reactivex.Completable;
 import io.reactivex.Flowable;
 import io.reactivex.FlowableTransformer;

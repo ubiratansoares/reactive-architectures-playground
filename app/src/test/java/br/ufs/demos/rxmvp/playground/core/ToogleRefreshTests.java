@@ -8,7 +8,7 @@ import org.mockito.MockitoAnnotations;
 
 import br.ufs.demos.rxmvp.playground.core.behaviours.tooglerefresh.RefreshToogle;
 import br.ufs.demos.rxmvp.playground.core.behaviours.tooglerefresh.ToogleRefreshView;
-import br.ufs.demos.rxmvp.playground.trivia.domain.errors.ContentNotFoundError;
+import br.ufs.demos.rxmvp.playground.core.behaviours.errors.ContentNotFoundError;
 import io.reactivex.Flowable;
 import io.reactivex.Scheduler;
 import io.reactivex.functions.Action;

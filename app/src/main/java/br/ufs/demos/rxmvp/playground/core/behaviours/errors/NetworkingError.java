@@ -1,4 +1,4 @@
-package br.ufs.demos.rxmvp.playground.core.behaviours.networking;
+package br.ufs.demos.rxmvp.playground.core.behaviours.errors;
 
 /**
  * Created by bira on 7/5/17.

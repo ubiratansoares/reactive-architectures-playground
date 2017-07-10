@@ -2,8 +2,8 @@ package br.ufs.demos.rxmvp.playground.core.infraerrors;
 
 import org.reactivestreams.Publisher;
 
-import br.ufs.demos.rxmvp.playground.trivia.domain.errors.ContentNotFoundError;
-import br.ufs.demos.rxmvp.playground.trivia.domain.errors.UnexpectedResponseError;
+import br.ufs.demos.rxmvp.playground.core.behaviours.errors.ContentNotFoundError;
+import br.ufs.demos.rxmvp.playground.core.behaviours.errors.UnexpectedResponseError;
 import io.reactivex.Flowable;
 import io.reactivex.FlowableTransformer;
 import retrofit2.HttpException;

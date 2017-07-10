@@ -6,7 +6,7 @@ import com.google.gson.JsonSyntaxException;
 
 import org.reactivestreams.Publisher;
 
-import br.ufs.demos.rxmvp.playground.trivia.domain.errors.UnexpectedResponseError;
+import br.ufs.demos.rxmvp.playground.core.behaviours.errors.UnexpectedResponseError;
 import io.reactivex.Flowable;
 import io.reactivex.FlowableTransformer;
 
