@@ -39,7 +39,7 @@ public class LoadingCoordinationTests {
         loadingCoordination = new LoadingCoordination<>(view, uiScheduler);
     }
 
-    @Test public void shouldNotAssignEmpty_WhenFlowEmmits() throws Exception {
+    @Test public void shouldCoordinateLoading_WhenFlowEmmits() throws Exception {
         Flowable.just("A", "B", "C")
                 .compose(loadingCoordination)
                 .subscribe();
@@ -48,14 +48,14 @@ public class LoadingCoordinationTests {
     }
 
 
-    @Test public void shouldNotAssignError_WithEmptyFlow() throws Exception {
+    @Test public void shouldCoordinateLoading_WithEmptyFlow() throws Exception {
         Flowable<String> empty = Flowable.empty();
         empty.compose(loadingCoordination).subscribe();
 
         checkLoadingCoordinated();
     }
 
-    @Test public void shouldAssignError_WithErrorAtFlow() throws Exception {
+    @Test public void shouldCoordinateLoading_WithErrorAtFlow() throws Exception {
         Flowable<String> broken = Flowable.error(new RuntimeException("WTF!!"));
 
         broken.compose(loadingCoordination)

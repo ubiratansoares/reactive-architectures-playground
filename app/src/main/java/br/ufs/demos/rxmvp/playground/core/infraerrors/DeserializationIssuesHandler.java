@@ -12,6 +12,10 @@ import io.reactivex.FlowableTransformer;
 
 /**
  * Created by bira on 6/29/17.
+ *
+ * Handles any errors throwed by GSON and report an UnexpectedResponse to
+ * next steps of pipeline
+ *
  */
 
 public class DeserializationIssuesHandler<T> implements FlowableTransformer<T, T> {

@@ -1,7 +1,5 @@
 package br.ufs.demos.rxmvp.playground.trivia.ui;
 
-import android.arch.lifecycle.LifecycleRegistry;
-import android.arch.lifecycle.LifecycleRegistryOwner;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -29,7 +27,7 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Action;
 
 public class FactsAboutNumbersActivity
-        extends AppCompatActivity implements DisplayFactsView, LifecycleRegistryOwner {
+        extends AppCompatActivity implements DisplayFactsView {
 
     private static final String TAG = FactsAboutNumbersActivity.class.getSimpleName();
 
@@ -54,10 +52,6 @@ public class FactsAboutNumbersActivity
     @Override protected void onResume() {
         super.onResume();
         newTrivia();
-    }
-
-    @Override public LifecycleRegistry getLifecycle() {
-        return new LifecycleRegistry(this);
     }
 
     @Override public Action showLoading() {

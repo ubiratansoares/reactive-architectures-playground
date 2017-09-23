@@ -13,9 +13,15 @@ import io.reactivex.FlowableTransformer;
 
 /**
  * Created by bira on 7/5/17.
+ *
+ * A handler for infrastructure that checks for any networking
+ * related errors and translates it to a proper mapped error
+ * with better semantics
+ *
  */
 
-public class NetworkingErrorHandler<T> implements FlowableTransformer<T, T> {
+public class NetworkingErrorHandler<T>
+        implements FlowableTransformer<T, T> {
 
     @Override public Publisher<T> apply(Flowable<T> upstream) {
         return upstream.onErrorResumeNext(this::handleIfNetworkingError);
