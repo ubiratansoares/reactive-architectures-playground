@@ -62,7 +62,7 @@ dependencies {
     annotationProcessor "android.arch.lifecycle:compiler:1.0.0-alpha9-1"
 
     testImplementation 'junit:junit:4.12'
-    testImplementation 'org.mockito:mockito-android:2.8.47'
+    testImplementation 'org.mockito:mockito-core:2.10.0'
     testImplementation 'com.squareup.okhttp3:mockwebserver:3.8.0'
     testImplementation "org.robolectric:robolectric:3.4.2"
     testImplementation 'org.assertj:assertj-core:3.8.0'
