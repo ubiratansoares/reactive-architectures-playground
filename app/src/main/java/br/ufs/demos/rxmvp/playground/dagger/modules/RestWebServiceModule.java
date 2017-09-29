@@ -1,4 +1,4 @@
-package br.ufs.demos.rxmvp.playground.webservice.di;
+package br.ufs.demos.rxmvp.playground.dagger.modules;
 
 import javax.inject.Singleton;
 

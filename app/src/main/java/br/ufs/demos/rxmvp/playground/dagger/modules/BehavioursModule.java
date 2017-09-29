@@ -1,6 +1,6 @@
-package br.ufs.demos.rxmvp.playground.core.di;
+package br.ufs.demos.rxmvp.playground.dagger.modules;
 
-import br.ufs.demos.rxmvp.playground.app.di.qualifiers.UIScheduler;
+import br.ufs.demos.rxmvp.playground.dagger.qualifiers.UIScheduler;
 import br.ufs.demos.rxmvp.playground.core.behaviours.BehavioursCoordinator;
 import br.ufs.demos.rxmvp.playground.core.behaviours.emptystate.AssignEmptyState;
 import br.ufs.demos.rxmvp.playground.core.behaviours.emptystate.EmptyStateView;

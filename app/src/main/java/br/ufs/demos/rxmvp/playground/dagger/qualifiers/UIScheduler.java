@@ -1,4 +1,4 @@
-package br.ufs.demos.rxmvp.playground.app.di.qualifiers;
+package br.ufs.demos.rxmvp.playground.dagger.qualifiers;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

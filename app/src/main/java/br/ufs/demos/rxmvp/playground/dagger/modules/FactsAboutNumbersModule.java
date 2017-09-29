@@ -1,9 +1,7 @@
-package br.ufs.demos.rxmvp.playground.trivia.di;
+package br.ufs.demos.rxmvp.playground.dagger.modules;
 
 import android.arch.lifecycle.LifecycleOwner;
 
-import br.ufs.demos.rxmvp.playground.core.di.BehavioursModule;
-import br.ufs.demos.rxmvp.playground.core.di.LifecycleStrategistModule;
 import br.ufs.demos.rxmvp.playground.core.behaviours.emptystate.EmptyStateView;
 import br.ufs.demos.rxmvp.playground.core.behaviours.errorstate.ErrorStateView;
 import br.ufs.demos.rxmvp.playground.core.behaviours.loadingcontent.LoadingView;

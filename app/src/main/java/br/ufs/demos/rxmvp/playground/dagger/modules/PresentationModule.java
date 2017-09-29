@@ -1,4 +1,4 @@
-package br.ufs.demos.rxmvp.playground.trivia.di;
+package br.ufs.demos.rxmvp.playground.dagger.modules;
 
 import android.content.Context;
 

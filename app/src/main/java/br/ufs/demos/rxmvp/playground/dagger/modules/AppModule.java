@@ -1,12 +1,12 @@
-package br.ufs.demos.rxmvp.playground.app.di;
+package br.ufs.demos.rxmvp.playground.dagger.modules;
 
 import android.app.Application;
 import android.content.Context;
 
 import javax.inject.Singleton;
 
-import br.ufs.demos.rxmvp.playground.app.di.qualifiers.IOScheduler;
-import br.ufs.demos.rxmvp.playground.app.di.qualifiers.UIScheduler;
+import br.ufs.demos.rxmvp.playground.dagger.qualifiers.IOScheduler;
+import br.ufs.demos.rxmvp.playground.dagger.qualifiers.UIScheduler;
 import dagger.Module;
 import dagger.Provides;
 import io.reactivex.Scheduler;

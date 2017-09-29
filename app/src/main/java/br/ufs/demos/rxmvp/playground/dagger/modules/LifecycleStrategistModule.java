@@ -1,4 +1,4 @@
-package br.ufs.demos.rxmvp.playground.core.di;
+package br.ufs.demos.rxmvp.playground.dagger.modules;
 
 import android.arch.lifecycle.LifecycleOwner;
 

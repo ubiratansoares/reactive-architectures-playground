@@ -5,7 +5,7 @@ import android.app.Application;
 
 import javax.inject.Inject;
 
-import br.ufs.demos.rxmvp.playground.app.di.DaggerAppComponent;
+import br.ufs.demos.rxmvp.playground.dagger.components.DaggerAppComponent;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.HasActivityInjector;
 
