@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "br.ufs.demos.rxmvp.playground"
-        minSdkVersion 21    
+        minSdkVersion 21
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -44,7 +44,7 @@ dependencies {
     implementation "com.google.dagger:dagger-android-support:2.11"
     annotationProcessor "com.google.dagger:dagger-compiler:2.11"
     annotationProcessor "com.google.dagger:dagger-android-processor:2.11"
-    
+
     implementation 'com.squareup.retrofit2:retrofit:2.3.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
@@ -67,8 +67,9 @@ dependencies {
     testImplementation "org.robolectric:robolectric:3.4.2"
     testImplementation 'org.assertj:assertj-core:3.8.0'
 
-    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
+
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test:rules:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 
 }
