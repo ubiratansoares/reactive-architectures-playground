@@ -139,7 +139,7 @@ public class FactsPresenterTests {
 
         BehavioursRobot.with(view)
                 .showLoadingFirstHideLoadingAfter()
-                .disableRefreshFirstAndNotEnableAfter()
+                .disableRefreshFirstAndEnableAfter()
                 .shouldShowErrorState()
                 .shouldNotShowEmptyState()
                 .shouldNotReportNetworkingError();
@@ -157,7 +157,7 @@ public class FactsPresenterTests {
 
         BehavioursRobot.with(view)
                 .showLoadingFirstHideLoadingAfter()
-                .disableRefreshFirstAndNotEnableAfter()
+                .disableRefreshFirstAndEnableAfter()
                 .shouldShowErrorState()
                 .shouldNotShowEmptyState()
                 .shouldReportNetworkingError();

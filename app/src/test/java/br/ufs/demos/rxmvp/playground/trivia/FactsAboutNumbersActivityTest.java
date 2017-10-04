@@ -33,7 +33,8 @@ import static org.robolectric.Robolectric.buildActivity;
 @Config(
         constants = BuildConfig.class,
         application = MainApplication.class,
-        sdk = 25
+        sdk = 25,
+        packageName = "br.ufs.demos.rxmvp.playground"
 )
 public class FactsAboutNumbersActivityTest {
 

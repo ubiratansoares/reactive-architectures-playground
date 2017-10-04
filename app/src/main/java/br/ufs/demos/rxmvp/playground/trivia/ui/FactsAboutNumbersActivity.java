@@ -26,6 +26,8 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Action;
 
+import static android.support.design.widget.Snackbar.LENGTH_INDEFINITE;
+
 public class FactsAboutNumbersActivity
         extends AppCompatActivity implements DisplayFactsView {
 
@@ -86,7 +88,7 @@ public class FactsAboutNumbersActivity
 
     @Override public Action reportNetworkingError() {
         return () ->
-                Snackbar.make(container, "Erro de conexão. Por favor, tente novamente", Snackbar.LENGTH_INDEFINITE)
+                Snackbar.make(container, R.string.feedback_message_internet_issue, LENGTH_INDEFINITE)
                         .setAction("TENTAR NOVAMENTE", view -> newTrivia())
                         .show();
     }

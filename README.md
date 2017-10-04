@@ -22,10 +22,6 @@ e ilustra uma série de idéias, dentre as quais
 
 Essa demo usa Android Studio / Android Gradle Plugin 3.0+ e é 100% escrita em Java
 
-## TODO
-
-- Alguns testes com Espresso
-- Aplicar alguma estratégia para retenção de estado após mudança de configuração (LiveData)
 
 ## License
 ```

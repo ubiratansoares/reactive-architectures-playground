@@ -6,9 +6,9 @@ import org.mockito.InOrder;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import br.ufs.demos.rxmvp.playground.core.behaviours.errors.UnexpectedResponseError;
 import br.ufs.demos.rxmvp.playground.core.behaviours.tooglerefresh.RefreshToogle;
 import br.ufs.demos.rxmvp.playground.core.behaviours.tooglerefresh.ToogleRefreshView;
-import br.ufs.demos.rxmvp.playground.core.behaviours.errors.ContentNotFoundError;
 import io.reactivex.Flowable;
 import io.reactivex.Scheduler;
 import io.reactivex.functions.Action;
@@ -62,7 +62,7 @@ public class ToogleRefreshTests {
         checkForDisableFirstEnableAfter();
     }
 
-    @Test public void shouldNotEnableAfter_WithNotSpecialError() throws Exception {
+    @Test public void shouldEnableAfter_WhenNoSpecialError() throws Exception {
         Flowable<Integer> broken = Flowable.error(new RuntimeException("WTF!!"));
 
         broken.compose(toogler)
@@ -72,11 +72,11 @@ public class ToogleRefreshTests {
                         () -> {}
                 );
 
-        checkForDisableFirstNotEnableAfter();
+        checkForDisableFirstEnableAfter();
     }
 
-    @Test public void shouldEnableAfter_WithSpecialError() throws Exception {
-        Flowable<Integer> broken = Flowable.error(new ContentNotFoundError());
+    @Test public void shouldDisableAfter_WithSpecialError() throws Exception {
+        Flowable<Integer> broken = Flowable.error(new UnexpectedResponseError("Server down"));
 
         broken.compose(toogler)
                 .subscribe(
@@ -85,7 +85,8 @@ public class ToogleRefreshTests {
                         () -> {}
                 );
 
-        checkForDisableFirstEnableAfter();
+        checkForDisableFirstNotEnableAfter();
+
     }
 
     private void checkForDisableFirstEnableAfter() throws Exception {

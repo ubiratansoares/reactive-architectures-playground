@@ -27,7 +27,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 @Config(
         constants = BuildConfig.class,
         application = MainApplication.class,
-        sdk = 25
+        sdk = 25,
+        packageName = "br.ufs.demos.rxmvp.playground"
 )
 public class FactsViewModelMapperTests {
 

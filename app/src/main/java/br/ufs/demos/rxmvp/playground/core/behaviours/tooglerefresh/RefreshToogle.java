@@ -2,7 +2,7 @@ package br.ufs.demos.rxmvp.playground.core.behaviours.tooglerefresh;
 
 import org.reactivestreams.Publisher;
 
-import br.ufs.demos.rxmvp.playground.core.behaviours.errors.ContentNotFoundError;
+import br.ufs.demos.rxmvp.playground.core.behaviours.errors.UnexpectedResponseError;
 import io.reactivex.Completable;
 import io.reactivex.Flowable;
 import io.reactivex.FlowableTransformer;
@@ -31,7 +31,7 @@ public class RefreshToogle<T> implements FlowableTransformer<T, T> {
     }
 
     private void enableForSpecialErrorCase(Throwable throwable) {
-        if (throwable instanceof ContentNotFoundError) fireAction(view.enableRefresh());
+        if (!(throwable instanceof UnexpectedResponseError)) fireAction(view.enableRefresh());
     }
 
     private void fireAction(Action toPerform) {
