@@ -1,0 +1,73 @@
+apply plugin: 'jacoco'
+
+// Enables code coverage for JVM tests.
+// Android Gradle Plugin out of the box supports only code coverage for instrumentation tests.
+project.afterEvaluate {
+    // Grab all build types and product flavors
+    def buildTypes = android.buildTypes.collect { type -> type.name }
+    def productFlavors = android.productFlavors.collect { flavor -> flavor.name }
+
+    // When no product flavors defined, use empty
+    if (!productFlavors) productFlavors.add('')
+
+    productFlavors.each { productFlavorName ->
+        buildTypes.each { buildTypeName ->
+            def sourceName, sourcePath
+            if (!productFlavorName) {
+                sourceName = sourcePath = "${buildTypeName}"
+            } else {
+                sourceName = "${productFlavorName}${buildTypeName.capitalize()}"
+                sourcePath = "${productFlavorName}/${buildTypeName}"
+            }
+            def testTaskName = "test${sourceName.capitalize()}UnitTest"
+            def coverageTaskName = "${testTaskName}Coverage"
+
+            // Create coverage task of form 'testFlavorTypeUnitTestCoverage' depending on 'testFlavorTypeUnitTest'
+            task "${coverageTaskName}"(type: JacocoReport, dependsOn: "$testTaskName") {
+                group = 'Reporting'
+                description = "Generate Jacoco coverage reports for the ${sourceName.capitalize()} build."
+
+                classDirectories = fileTree(
+                        dir: "${project.buildDir}/intermediates/classes/${sourcePath}",
+                        excludes: [
+                                '**/R.class',
+                                '**/R$*.class',
+                                '**/*$ViewInjector*.*',
+                                '**/*$ViewBinder*.*',
+                                '**/*_ViewBinding*.*',
+                                '**/BuildConfig.*',
+                                '**/Manifest*.*',
+                                '**/*$Lambda$*.*',
+                                '**/*$inlined$*.*',
+                                '**/*Module.*',
+                                '**/*Dagger*.*',
+                                '**/*MembersInjector*.*',
+                                '**/*_MembersInjector.class',
+                                '**/Dagger*Component.class',
+                                '**/Dagger*Component$Builder.class',
+                                '**/*Module_*Factory.class',
+                                '**/*Builder_*.class',
+                                '**/*ActivitiesBuilder.class'
+                        ]
+                )
+
+                def coverageSourceDirs = [
+                        'src/main/java',
+                        "src/$productFlavorName/java",
+                        "src/$buildTypeName/java"
+                ]
+
+                additionalSourceDirs = files(coverageSourceDirs)
+                sourceDirectories = files(coverageSourceDirs)
+                executionData = files("${project.buildDir}/jacoco/${testTaskName}.exec")
+
+                reports {
+                    xml.enabled = true
+                    html.enabled = true
+                }
+            }
+
+            build.dependsOn "${coverageTaskName}"
+        }
+    }
+}

@@ -1,4 +1,9 @@
 apply plugin: 'com.android.application'
+apply from: '../code-quality/jacoco.gradle'
+
+jacoco {
+    toolVersion = "0.7.9"
+}
 
 android {
     compileSdkVersion 26
@@ -15,6 +20,9 @@ android {
     }
 
     buildTypes {
+        debug {
+            testCoverageEnabled true
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -37,6 +45,12 @@ android {
     testOptions {
         unitTests {
             includeAndroidResources = true
+        }
+
+        unitTests.all {
+            jacoco {
+                includeNoLocationClasses = true
+            }
         }
     }
 }
@@ -76,7 +90,6 @@ dependencies {
     testImplementation "org.robolectric:robolectric:3.4.2"
     testImplementation 'org.assertj:assertj-core:3.8.0'
 
-
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test:rules:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
@@ -85,3 +98,5 @@ dependencies {
         exclude group: 'com.android.support'
     }
 }
+
+
