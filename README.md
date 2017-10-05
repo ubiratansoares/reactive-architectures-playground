@@ -1,3 +1,7 @@
+[![Build Status](https://circleci.com/gh/ubiratansoares/reactive-architectures-playground.svg?style=shield&circle-token=6aa6dfc358b4aefd33c374915401ba0f92f8bc50)](https://circleci.com/gh/ubiratansoares/reactive-architectures-playground)
+[![codecov.io](https://codecov.io/gh/ubiratansoares/reactive-architectures-playground/branch/master/graph/badge.svg)](https://codecov.io/gh/ubiratansoares/reactive-architectures-playground)
+
+
 # Reactive MVP Playground
 
 Sample companheiro para minha apresentação / blog post 
