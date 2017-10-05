@@ -24,6 +24,9 @@ jobs:
       - run:
           name: Assemble debug APK
           command: ./gradlew assembleDebug --no-daemon
+      - run:
+          name: Upload reports to Codecov
+          command: bash <(curl -s https://codecov.io/bash)
       - save_cache:
           paths:
             - ~/.gradle
@@ -42,26 +45,9 @@ jobs:
             - .gradle
             - build
             - app/build
-  upload_reports:
-    <<: *defaults
-    steps:
-      - checkout
-      - restore_cache:
-          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
-      - attach_workspace:
-          at: ~/code
-      - run:
-          name: Upload reports to Codecov
-          command: bash <(curl -s https://codecov.io/bash)
 
 workflows:
   version: 2
   build_and_test:
     jobs:
       - build
-      - upload_reports:
-          requires:
-            - build
-          filters:
-            branches:
-              only: master
