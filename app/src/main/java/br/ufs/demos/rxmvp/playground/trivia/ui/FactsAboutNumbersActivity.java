@@ -33,10 +33,10 @@ public class FactsAboutNumbersActivity
 
     private static final String TAG = FactsAboutNumbersActivity.class.getSimpleName();
 
+    @BindView(R.id.recyclerview_facts) public RecyclerView factsView;
     @BindView(R.id.container) View container;
     @BindView(R.id.label_feedback_message) TextView feedbackMessage;
     @BindView(R.id.progressBar) ProgressBar loading;
-    @BindView(R.id.recyclerview_facts) RecyclerView factsView;
     @BindView(R.id.fab) FloatingActionButton fab;
 
     @Inject FactsPresenter presenter;

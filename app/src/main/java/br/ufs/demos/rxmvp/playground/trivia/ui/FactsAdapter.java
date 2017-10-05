@@ -16,6 +16,8 @@ import br.ufs.demos.rxmvp.playground.trivia.presentation.models.NumberAndFact;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static br.ufs.demos.rxmvp.playground.util.Checks.notNullNotEmpty;
+
 /**
  * Created by bira on 7/4/17.
  */
@@ -42,7 +44,11 @@ public class FactsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     }
 
     @Override public int getItemViewType(int position) {
-        return models.get(position).viewType();
+        if (notNullNotEmpty(models)) {
+            return models.get(position).viewType();
+        }
+
+        throw new IllegalStateException("No models to adapt");
     }
 
     @Override public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -82,7 +88,6 @@ public class FactsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                 bindAsSingleLabel(holder, viewModel);
                 break;
         }
-
     }
 
     private void bindAsSingleLabel(RecyclerView.ViewHolder holder, FactViewModel viewModel) {
@@ -99,13 +104,13 @@ public class FactsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     }
 
     @Override public int getItemCount() {
-        return models.size();
+        return notNullNotEmpty(models) ? models.size() : 0;
     }
 
-    static class TwoLabelsHolder extends RecyclerView.ViewHolder {
+    public static class TwoLabelsHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.label_number) TextView labelNumber;
-        @BindView(R.id.label_fact) TextView labelFact;
+        @BindView(R.id.label_number) public TextView labelNumber;
+        @BindView(R.id.label_fact) public TextView labelFact;
 
         public TwoLabelsHolder(View itemView) {
             super(itemView);
@@ -113,9 +118,9 @@ public class FactsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         }
     }
 
-    static class SingleLabelHolder extends RecyclerView.ViewHolder {
+    public static class SingleLabelHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.label_single_message) TextView singleLabel;
+        @BindView(R.id.label_single_message) public TextView singleLabel;
 
         public SingleLabelHolder(View itemView) {
             super(itemView);
