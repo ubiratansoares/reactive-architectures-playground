@@ -17,11 +17,4 @@ public class FactAboutNumber {
     public static FactAboutNumber of(String number, String fact) {
         return new FactAboutNumber(number, fact);
     }
-
-    @Override public String toString() {
-        return "FactAboutNumber{" +
-                "number='" + number + '\'' +
-                ", fact='" + fact + '\'' +
-                '}';
-    }
 }

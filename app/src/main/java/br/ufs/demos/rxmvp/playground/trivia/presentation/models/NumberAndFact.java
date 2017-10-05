@@ -13,14 +13,7 @@ public class NumberAndFact implements FactViewModel {
         this.number = number;
         this.fact = fact;
     }
-
-    @Override public String toString() {
-        return "NumberAndFact{" +
-                "number='" + number + '\'' +
-                ", fact='" + fact + '\'' +
-                '}';
-    }
-
+    
     @Override public CharSequence formattedFact() {
         return fact;
     }

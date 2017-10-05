@@ -48,6 +48,8 @@ project.afterEvaluate {
                                 '**/*Module_*Factory.class',
                                 '**/*Builder_*.class',
                                 '**/*ActivitiesBuilder.class',
+                                '**/*Fake*.*',
+                                '**/*_LifecycleAdapter.class',
                                 'JAVAC.SYNTHCLASS',
                                 'JAVAC.SYNTHMETH',
                                 'JAVAC.NOT',
