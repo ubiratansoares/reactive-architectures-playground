@@ -13,11 +13,10 @@ import io.reactivex.FlowableTransformer;
 
 /**
  * Created by bira on 7/5/17.
- *
+ * <p>
  * A handler for infrastructure that checks for any networking
  * related errors and translates it to a proper mapped error
  * with better semantics
- *
  */
 
 public class NetworkingErrorHandler<T>
@@ -40,15 +39,13 @@ public class NetworkingErrorHandler<T>
     private String failureFrom(Throwable throwable) {
         if (isConnectionTimeout(throwable)) {
             return "Connection timeout";
-
-        } else if (isRequestCanceled(throwable)) {
-            return "Connection interrupted error";
-
-        } else if (noInternetAvailable(throwable)) {
-            return "No internet available";
         }
 
-        return "Unknown networking error";
+        if (isRequestCanceled(throwable)) {
+            return "Connection interrupted error";
+        }
+
+        return "No internet available";
     }
 
     private boolean isNetworkingError(Throwable throwable) {

@@ -20,19 +20,23 @@ public class RestErrorsHandler<T> implements FlowableTransformer<T, T> {
 
     private Publisher<T> handleIfRestError(Throwable throwable) {
 
-        if (notFound(throwable)) {
-            return Flowable.error(new ContentNotFoundError());
+        if (otherThanNotFound(throwable)) {
+            return Flowable.error(new UnexpectedResponseError("Undesired response for this call"));
         }
 
-        if (otherRestError(throwable)) {
-            return Flowable.error(new UnexpectedResponseError("Undesired response for this call"));
+        if (notFound(throwable)) {
+            return Flowable.error(new ContentNotFoundError());
         }
 
         return Flowable.error(throwable);
     }
 
-    private boolean otherRestError(Throwable throwable) {
-        return !notFound(throwable) && (throwable instanceof HttpException);
+    private boolean otherThanNotFound(Throwable throwable) {
+        if (throwable instanceof HttpException) {
+            return !notFound(throwable);
+        }
+
+        return false;
     }
 
     private boolean notFound(Throwable throwable) {
