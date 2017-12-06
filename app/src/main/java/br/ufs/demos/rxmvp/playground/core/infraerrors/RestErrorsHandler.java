@@ -32,11 +32,7 @@ public class RestErrorsHandler<T> implements FlowableTransformer<T, T> {
     }
 
     private boolean otherThanNotFound(Throwable throwable) {
-        if (throwable instanceof HttpException) {
-            return !notFound(throwable);
-        }
-
-        return false;
+        return throwable instanceof HttpException && !notFound(throwable);
     }
 
     private boolean notFound(Throwable throwable) {

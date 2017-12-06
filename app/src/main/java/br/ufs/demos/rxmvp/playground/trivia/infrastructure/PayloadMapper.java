@@ -12,7 +12,7 @@ import ix.Ix;
 
 public class PayloadMapper {
 
-    public List<FactAboutNumber> toNumberFacts(NumbersTriviaPayload payload) {
+    List<FactAboutNumber> toNumberFacts(NumbersTriviaPayload payload) {
 
         return Ix.from(payload.entrySet())
                 .map(entry -> FactAboutNumber.of(entry.getKey(), entry.getValue()))

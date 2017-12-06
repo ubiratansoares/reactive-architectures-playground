@@ -18,11 +18,11 @@ import io.reactivex.Scheduler;
 
 public class TriviaInfrastructure implements GetRandomFacts {
 
-    NumbersWebService webService;
-    TriviaGenerator triviaGenerator;
-    PayloadMapper mapper;
-    PayloadValidator validator;
-    Scheduler executionScheduler;
+    private NumbersWebService webService;
+    private TriviaGenerator triviaGenerator;
+    private PayloadMapper mapper;
+    private PayloadValidator validator;
+    private Scheduler executionScheduler;
 
     public TriviaInfrastructure(NumbersWebService webService,
                                 TriviaGenerator triviaGenerator,

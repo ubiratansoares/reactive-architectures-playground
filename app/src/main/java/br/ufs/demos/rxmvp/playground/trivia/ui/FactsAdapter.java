@@ -38,7 +38,7 @@ public class FactsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         notifyItemInserted(actualPosition);
     }
 
-    public void clear() {
+    void clear() {
         models.clear();
         notifyDataSetChanged();
     }
@@ -112,7 +112,7 @@ public class FactsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         @BindView(R.id.label_number) public TextView labelNumber;
         @BindView(R.id.label_fact) public TextView labelFact;
 
-        public TwoLabelsHolder(View itemView) {
+        TwoLabelsHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
@@ -122,7 +122,7 @@ public class FactsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
         @BindView(R.id.label_single_message) public TextView singleLabel;
 
-        public SingleLabelHolder(View itemView) {
+        SingleLabelHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
