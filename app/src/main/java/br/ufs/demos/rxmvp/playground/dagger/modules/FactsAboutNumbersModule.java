@@ -9,8 +9,8 @@ import br.ufs.demos.rxmvp.playground.core.behaviours.networking.NetworkingErrorV
 import br.ufs.demos.rxmvp.playground.core.behaviours.tooglerefresh.ToogleRefreshView;
 import br.ufs.demos.rxmvp.playground.trivia.presentation.DisplayFactsView;
 import br.ufs.demos.rxmvp.playground.trivia.ui.FactsAboutNumbersActivity;
+import dagger.Binds;
 import dagger.Module;
-import dagger.Provides;
 
 /**
  * Created by bira on 7/5/17.
@@ -23,34 +23,20 @@ import dagger.Provides;
                 PresentationModule.class
         }
 )
-public class FactsAboutNumbersModule {
+public abstract class FactsAboutNumbersModule {
 
-    @Provides static DisplayFactsView displayFactsView(FactsAboutNumbersActivity activity) {
-        return activity;
-    }
+    @Binds abstract DisplayFactsView displayFactsView(FactsAboutNumbersActivity activity);
 
-    @Provides static ToogleRefreshView toogleRefreshView(FactsAboutNumbersActivity activity) {
-        return activity;
-    }
+    @Binds abstract ToogleRefreshView toogleRefreshView(FactsAboutNumbersActivity activity);
 
-    @Provides static LoadingView loadingView(FactsAboutNumbersActivity activity) {
-        return activity;
-    }
+    @Binds abstract LoadingView loadingView(FactsAboutNumbersActivity activity);
 
-    @Provides static ErrorStateView errorStateView(FactsAboutNumbersActivity activity) {
-        return activity;
-    }
+    @Binds abstract ErrorStateView errorStateView(FactsAboutNumbersActivity activity);
 
-    @Provides static EmptyStateView emptyStateView(FactsAboutNumbersActivity activity) {
-        return activity;
-    }
+    @Binds abstract EmptyStateView emptyStateView(FactsAboutNumbersActivity activity);
 
-    @Provides static NetworkingErrorView networkingErrorView(FactsAboutNumbersActivity activity) {
-        return activity;
-    }
+    @Binds abstract NetworkingErrorView networkingErrorView(FactsAboutNumbersActivity activity);
 
-    @Provides static LifecycleOwner strategist(FactsAboutNumbersActivity activity) {
-        return activity;
-    }
+    @Binds abstract LifecycleOwner strategist(FactsAboutNumbersActivity activity);
 
 }

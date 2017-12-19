@@ -1,10 +1,9 @@
 package br.ufs.demos.rxmvp.playground.dagger.modules;
 
-import javax.inject.Singleton;
-
 import br.ufs.demos.rxmvp.playground.webservice.NumbersWebService;
 import dagger.Module;
 import dagger.Provides;
+import dagger.Reusable;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -19,7 +18,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 @Module
 public class RestWebServiceModule {
 
-    @Provides @Singleton static NumbersWebService webService(OkHttpClient customHttpClient) {
+    @Provides @Reusable static NumbersWebService webService(OkHttpClient customHttpClient) {
 
         Retrofit adapter = new Retrofit.Builder()
                 .baseUrl(NumbersWebService.BASE_URL)
@@ -31,14 +30,14 @@ public class RestWebServiceModule {
         return adapter.create(NumbersWebService.class);
     }
 
-    @Provides @Singleton static OkHttpClient httpClient(Interceptor logger) {
+    @Provides @Reusable static OkHttpClient httpClient(Interceptor logger) {
 
         return new OkHttpClient.Builder()
                 .addInterceptor(logger)
                 .build();
     }
 
-    @Provides @Singleton static Interceptor logger() {
+    @Provides @Reusable static Interceptor logger() {
         HttpLoggingInterceptor logger = new HttpLoggingInterceptor();
         logger.setLevel(HttpLoggingInterceptor.Level.BODY);
         return logger;
