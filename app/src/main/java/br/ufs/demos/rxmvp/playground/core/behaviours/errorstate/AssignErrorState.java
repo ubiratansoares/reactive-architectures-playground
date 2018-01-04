@@ -14,8 +14,8 @@ import io.reactivex.Scheduler;
 
 public class AssignErrorState<T> implements FlowableTransformer<T, T> {
 
-    ErrorStateView view;
-    Scheduler uiScheduler;
+    private ErrorStateView view;
+    private Scheduler uiScheduler;
 
     public AssignErrorState(ErrorStateView view, Scheduler uiScheduler) {
         this.view = view;

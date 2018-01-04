@@ -14,8 +14,8 @@ import io.reactivex.Scheduler;
 
 public class AssignEmptyState<T> implements FlowableTransformer<T, T> {
 
-    EmptyStateView view;
-    Scheduler uiScheduler;
+    private EmptyStateView view;
+    private Scheduler uiScheduler;
 
     public AssignEmptyState(EmptyStateView view, Scheduler uiScheduler) {
         this.view = view;

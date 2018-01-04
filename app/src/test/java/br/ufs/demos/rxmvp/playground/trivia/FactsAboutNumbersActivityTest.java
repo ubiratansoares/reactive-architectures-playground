@@ -21,7 +21,6 @@ import br.ufs.demos.rxmvp.playground.trivia.ui.FactsAboutNumbersActivity;
 import br.ufs.demos.rxmvp.playground.trivia.ui.FactsAdapter;
 import io.reactivex.Flowable;
 
-import static butterknife.ButterKnife.findById;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.robolectric.Robolectric.buildActivity;
 
@@ -33,7 +32,7 @@ import static org.robolectric.Robolectric.buildActivity;
 @Config(
         constants = BuildConfig.class,
         application = MainApplication.class,
-        sdk = 25,
+        sdk = 27,
         packageName = "br.ufs.demos.rxmvp.playground"
 )
 public class FactsAboutNumbersActivityTest {
@@ -45,15 +44,15 @@ public class FactsAboutNumbersActivityTest {
     }
 
     @Test public void setupViewsProperly_OnCreate() {
-        ProgressBar loading = findById(activity, R.id.progressBar);
+        ProgressBar loading = activity.findViewById(R.id.progressBar);
         assertThat(loading.getVisibility()).isEqualTo(View.GONE);
 
-        View labelMessage = findById(activity, R.id.label_feedback_message);
+        View labelMessage = activity.findViewById(R.id.label_feedback_message);
         assertThat(labelMessage.getVisibility()).isEqualTo(View.GONE);
     }
 
     @Test public void shoulIntegrateActions_ForLoadingVisibility() throws Exception {
-        ProgressBar loading = findById(activity, R.id.progressBar);
+        ProgressBar loading = activity.findViewById(R.id.progressBar);
 
         activity.showLoading().run();
         assertThat(loading.getVisibility()).isEqualTo(View.VISIBLE);
@@ -63,7 +62,7 @@ public class FactsAboutNumbersActivityTest {
     }
 
     @Test public void shoulIntegrateActions_ForErrorState() throws Exception {
-        View labelMessage = findById(activity, R.id.label_feedback_message);
+        View labelMessage = activity.findViewById(R.id.label_feedback_message);
 
         activity.showErrorState().run();
         assertThat(labelMessage.getVisibility()).isEqualTo(View.VISIBLE);
@@ -73,7 +72,7 @@ public class FactsAboutNumbersActivityTest {
     }
 
     @Test public void shoulIntegrateActions_ForEmptyState() throws Exception {
-        View labelMessage = findById(activity, R.id.label_feedback_message);
+        View labelMessage = activity.findViewById(R.id.label_feedback_message);
 
         activity.showEmptyState().run();
         assertThat(labelMessage.getVisibility()).isEqualTo(View.VISIBLE);
@@ -88,7 +87,7 @@ public class FactsAboutNumbersActivityTest {
 
         // From design_layout_snackbar_include.xml, since Snackbar does not
         // have an id assigned at his own container
-        View snackText = findById(activity, R.id.snackbar_text);
+        View snackText = activity.findViewById(R.id.snackbar_text);
 
         assertThat(snackText).isNotNull();
         assertThat(snackText.getVisibility()).isEqualTo(View.VISIBLE);
@@ -96,7 +95,7 @@ public class FactsAboutNumbersActivityTest {
 
     @Test public void shoulIntegrateActions_ForRefreshToogle() throws Exception {
 
-        View fab = findById(activity, R.id.fab);
+        View fab = activity.findViewById(R.id.fab);
 
         activity.disableRefresh().run();
         assertThat(fab.getVisibility()).isEqualTo(View.GONE);
@@ -107,7 +106,7 @@ public class FactsAboutNumbersActivityTest {
 
     @Test public void shoulIntegrate_DataDispatching_AvailableData() throws Exception {
 
-        View labelMessage = findById(activity, R.id.label_feedback_message);
+        View labelMessage = activity.findViewById(R.id.label_feedback_message);
 
         List<FactViewModel> facts = Arrays.asList(
                 new NumberAndFact("1", "1 is the first"),
@@ -126,7 +125,7 @@ public class FactsAboutNumbersActivityTest {
 
     @Test public void shoulIntegrate_DataDispatching_NoData() throws Exception {
 
-        View labelMessage = findById(activity, R.id.label_feedback_message);
+        View labelMessage = activity.findViewById(R.id.label_feedback_message);
 
         Flowable<FactViewModel> dataFlow = Flowable.empty();
         FactsAdapter adapter = activity.adapter;
