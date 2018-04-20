@@ -3,4 +3,5 @@
     <string name="feedback_empty_state">Não há trivia disponível</string>
     <string name="feedback_error_state">Ocorreu um erro ao gerar a trivia ...</string>
     <string name="feedback_message_internet_issue">Erro de conexão. Por favor, tente novamente</string>
+    <string name="feedback_action_internet_issue">TENTAR NOVAMENTE</string>
 </resources>

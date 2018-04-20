@@ -89,7 +89,7 @@ public class FactsAboutNumbersActivity
     @Override public Action reportNetworkingError() {
         return () ->
                 Snackbar.make(container, R.string.feedback_message_internet_issue, LENGTH_INDEFINITE)
-                        .setAction("TENTAR NOVAMENTE", view -> newTrivia())
+                        .setAction(R.string.feedback_action_internet_issue, view -> newTrivia())
                         .show();
     }
 
